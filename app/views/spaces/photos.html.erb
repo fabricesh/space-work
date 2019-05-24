@@ -1,0 +1,31 @@
+<div class="bg-white">
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="navbar-brand">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" />
+      Etape 2 : Donnez le ton
+    </div>
+  </div>
+    <div class="_active-loading-bar" style="width: 33.3333%; left: 0%; max-width: 100%;"></div>
+    <div class="_unactive-loading-bar" style="width: 33.3333%; left: 33.3333%; max-width: 66.6667%;"></div>
+    <div class="_unactive-loading-bar" style="width: 33.3333%; left: 66.6667%; max-width: 33.3333%;"></div>
+  <div style="margin-top: 32px; margin-bottom: 8px;">
+    <div class="_container">
+      <div class="_title">Ajoutez des photos à votre annonce</div>
+      <div style="margin-top: 8px; margin-bottom: 24px;">
+        <div class="_description">Les photos aident les collaborateurs à se projeter dans votre espace de travail. Vous pouvez commencer par une photo, puis en ajouter d'autres après la publication.</div>
+        </div>
+        <%= simple_form_for @space, :url => {:action => "description"} do |f| %>
+          <%= f.input :photo %>
+          <%= f.input :photo_cache, as: :hidden %>
+          <%= f.submit %>
+        <% end %>
+    </div>
+  </div>
+</div>
+<div class="_to-the-bottom">
+  <div class="d-flex justify-content-between _bottom-background">
+    <div class="m-6">
+      <%= link_to "Retour", new_space_path, class: "btn btn-light" %>
+    </div>
+  </div>
+</div>

@@ -1,18 +1,37 @@
-<h1>edit</h1>
+<div class="bg-white">
+  <div class="bg-white row row-condensed">
+    <div class="col-md-7">
+      <div class="p-5 m-3">
+        <div class="m-3 mb-5">
+          <h2> Mes informations</h2>
+        </div>
+        <div class="m-3">
 
-<p><%= @space.title %></p>
+          <div class="h4 mb-4">Valider</div>
+            <div>
+              <div class="row row-condensed">
+                <div class="col-md-6 col-sm-12">
+                  <%= simple_form_for(@space) do |form| %>
+                  <%= form.input :title %>
+                  <%= form.input :localisation %>
+                  <%= form.input :availabilities %>
+                  <%= form.input :price %>
+                  <%= form.input :space_type %>
+                  <%= form.input :capacity %>
+                  <%= form.input :image %>
 
- <%= simple_form_for(@space) do |form| %>
-  <%= form.input :title %>
-  <%= form.input :localisation %>
-  <%= form.input :availabilities %>
-  <%= form.input :price %>
-  <%= form.input :space_type %>
-  <%= form.input :capacity %>
-  <%= form.input :image %>
-
-  <%= form.button :submit%>
-  <% end %>
-
-
-
+                  <%= form.button :submit, "Continuer", class: "btn-primary" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 landing__right-col">
+      <div class="_e296pg" style="width:100%;height:auto">
+        <img class="_1u6feuz3" src="https://a0.muscache.com/airbnb/static/packages/start.b12a70f6.png" width="100%" height="auto" alt="Commencer">
+      </div>
+    </div>
+  </div>
+</div>

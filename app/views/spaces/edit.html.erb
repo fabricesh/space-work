@@ -1,0 +1,18 @@
+<h1>edit</h1>
+
+<p><%= @space.title %></p>
+
+ <%= simple_form_for(@space) do |form| %>
+  <%= form.input :title %>
+  <%= form.input :localisation %>
+  <%= form.input :availabilities %>
+  <%= form.input :price %>
+  <%= form.input :space_type %>
+  <%= form.input :capacity %>
+  <%= form.input :image %>
+
+  <%= form.button :submit%>
+  <% end %>
+
+
+

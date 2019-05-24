@@ -10,7 +10,7 @@
   <div class="flex cards">
   <% @spaces.each do |space| %>
      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path space.photo, height: 300, width: 400, crop: :fill %>')">
-    <%= link_to space.name, space_path(space) %>
+    <%= link_to space.title, space_path(space) %>
   </div>
 
 

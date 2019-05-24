@@ -1,10 +1,12 @@
 class SpacesController < ApplicationController
+
   def index
     @spaces = Space.all
   end
 
   def show
     @space = Space.find(params[:id])
+    authorize @space
   end
 
   def new
@@ -30,10 +32,12 @@ class SpacesController < ApplicationController
 
   def edit
     @space = Space.find(params[:id])
+    authorize @space
   end
 
   def update
     @space = Space.find(params[:id])
+    authorize @space
     if @space.update(space_params)
       redirect_to space_path(@space)
     else

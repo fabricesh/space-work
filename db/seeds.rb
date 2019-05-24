@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 puts 'Creating User...'
 user = User.new(
   email: "azerty@gmail.com",
@@ -56,7 +57,9 @@ space = Space.new(
   price: "50€",
   space_type: "Partagé",
   capacity: "10 personnes",
+  image: "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558633729/wagon.001_xyypeg.png",
   user_id: user.id
+
   )
 space.remote_photo_url = "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558706128/workspace8_x92laq.png"
 space.save
@@ -157,3 +160,5 @@ space = Space.new(
 space.remote_photo_url = "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558707451/Wework3_qcwpzx.jpg"
 space.save
 puts 'Finished'
+
+

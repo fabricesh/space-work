@@ -1,5 +1,10 @@
 show.html.erb
 
-<%= link_to "Delete", space_path(@space),
+<br>
+
+  <%= link_to "Delete", space_path(@space), class: "btn btn-primary",
       method: :delete,
       data: { confirm: "Are you sure?" } %>
+
+
+

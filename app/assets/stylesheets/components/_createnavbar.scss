@@ -1,0 +1,17 @@
+._active-loading-bar {
+    display: inline-block;
+    height: 10px;
+    position: absolute;
+    background-color: rgb(0, 132, 137);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-right: 0.3px solid rgb(0, 132, 137);
+}
+
+._unactive-loading-bar {
+    display: inline-block;
+    background-color: rgb(237, 239, 237);
+    height: 10px;
+    position: absolute;
+    border-right: 0.3px solid rgb(220, 224, 224);
+}

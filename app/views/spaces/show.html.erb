@@ -1,25 +1,33 @@
 <!-- cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill  -->
-<div class="card-product">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg">
-  <div class="card-product-infos">
-    <h1><%= @space.title %></h1>
-    <p><%= @space.availabilities %></p>
-    <p><%= @space.price %></p>
-    <p><%= @space.space_type %></p>
-    <p><%= @space.capacity %></p>
+
+
+<div class="container">
+
+  <div class="card-product">
+
+    <div class="card-a" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @space.photo, height: 300, width: 400, crop: :fill %>')">
+    </div>
+
+    <div class="card-product-infos">
+      <h1><%= @space.title %></h1>
+      <p><%= @space.availabilities %></p>
+      <p><%= @space.price %></p>
+      <p><%= @space.space_type %></p>
+      <p><%= @space.capacity %></p>
+    </div>
+  </div>
+
+  <%= link_to "contact renter", new_space_path, class: "btn btn-primary btn-lg" %>
+
+  <h2>Selection des options de réservation</h2>
+  <%= simple_form_for [@space, @reservation] do |f| %>
+    <%= f.input :start_day %>
+    <%= f.input :end_day %>
+    <%= f.input :number_worker %>
+    <%= f.button :submit, "Valider votre réservation", class: "btn-primary" %>
+  <% end %>
   </div>
 </div>
-
-<%= link_to "contact renter", new_space_path, class: "btn btn-primary btn-lg" %>
-
-<h2>Selection des options de réservation</h2>
-<%= simple_form_for [@space, @reservation] do |f| %>
-  <%= f.input :start_day %>
-  <%= f.input :end_day %>
-  <%= f.input :number_worker %>
-  <%= f.button :submit, "Valider votre réservation", class: "btn-primary" %>
-<% end %>
-
 
 
 

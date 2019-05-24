@@ -3,6 +3,10 @@ class SpacesController < ApplicationController
     @spaces = Space.all
   end
 
+  def show
+    @space = Space.find(params[:id])
+  end
+
   def new
     @space = Space.new
     @space_types = ["Local entier", "Espace privé", "Espace partagé"]
@@ -12,6 +16,33 @@ class SpacesController < ApplicationController
     end
     @workers_number.delete_at(1)
     @workers_number.delete_at(2)
+  end
+
+  def create
+    @space = Space.new(params[:space])
+    if @space.save
+      redirect_to space_path(@space)
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @space = Space.find(params[:id])
+  end
+
+  def update
+    @space = Space.find(params[:id])
+    if @space.update(space_params)
+      redirect_to space_path(@space)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @space = Space.find(params[:id])
+    @space.destroy
   end
 
   def photos
@@ -38,6 +69,6 @@ class SpacesController < ApplicationController
   private
 
   def space_params
-    params.require(:space).permit(:title, :localisation, :availabilities, :price, :space_type, :capacity, :image)
+    params.require(:space).permit(:title, :localisation, :availabilities, :price, :space_type, :capacity, :photo)
   end
 end

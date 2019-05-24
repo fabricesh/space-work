@@ -2,7 +2,7 @@ class SpacesController < ApplicationController
   def index
     @spaces = Space.all
   end
-  
+
   def new
     @space = Space.new
     @space_types = ["Local entier", "Espace privé", "Espace partagé"]
@@ -40,6 +40,6 @@ class SpacesController < ApplicationController
   private
 
   def space_params
-    params.require(:space).permit(:title, :localisation, :availabilities, :price, :space_type, :capacity, :image)
+    params.require(:space).permit(:title, :localisation, :availabilities, :price, :space_type, :capacity, :photo)
   end
 end

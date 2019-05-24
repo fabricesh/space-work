@@ -13,43 +13,19 @@
       <div class="_title">Ajoutez des photos à votre annonce</div>
       <div style="margin-top: 8px; margin-bottom: 24px;">
         <div class="_description">Les photos aident les collaborateurs à se projeter dans votre espace de travail. Vous pouvez commencer par une photo, puis en ajouter d'autres après la publication.</div>
-      </div>
-      <%= link_to "Télécharger des photos", "/spaces/description", class: "btn btn-primary" %>
+        </div>
+        <%= link_to "Télécharger des photos","#", class: "btn btn-primary" %>
     </div>
   </div>
 </div>
 <div class="_to-the-bottom">
-  <div class="_align_with_block">
-    <div class="_bottom-background">
-      <div class="_bottom-padding">
-        <div class="_grey-line-bottom"></div>
-          <div class="_1hbsadf">
-            <div class="_1hfa947x">
-              <div class="_ni9axhe">
-                <span class="_1p3joamp">
-                  <a href="/become-a-host/35007239" class="_n8ooixh" aria-busy="false">
-                    <div class="_qtix31">
-                      <div class="_ni9axhe">
-                        <div style="margin-right: 8px;">
-                          <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;">
-                            <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="_ni9axhe">Retour</div>
-                    </div>
-                  </a>
-                </span>
-              </div>
-              <div class="_10ejfg4u"></div>
-              <div class="_ni9axhe">
-                <a href="/become-a-host/35007239/description" class="_cstn14u" aria-busy="false">
-                  <span class="_d0z9t8r">Plus tard</span>
-                </a>
-              </div>
-            </div>
-          </div>
-      </div>
+  <div class="d-flex justify-content-between _bottom-background">
+    <div class="m-6">
+      <%= link_to "Retour", new_space_path, class: "btn btn-light" %>
+    </div>
+    <div class="m-6">
+      <%= link_to "Suivant",  spaces_description_path, class: "btn btn-success" %>
     </div>
   </div>
 </div>
+

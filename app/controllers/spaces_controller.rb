@@ -2,12 +2,11 @@ class SpacesController < ApplicationController
   def index
     @spaces = Space.all
   end
-  
+
   def new
     @space = Space.new
     @space_types = ["Local entier", "Espace privé", "Espace partagé"]
     @workers_number = ["pour 1 collaborateur"]
-
     20.times do |i|
       @workers_number << "pour #{i + 1} collaborateurs"
     end
@@ -17,19 +16,18 @@ class SpacesController < ApplicationController
 
   def photos
     @space = Space.new(space_params)
-
   end
 
   def description
-    @space = Space.new(params[:space])
+    @space = Space.new(space_params)
   end
 
   def title
-    @space = Space.new(params[:space])
+    @space = Space.new(space_params)
   end
 
   def create
-    @space = Space.new(params[:space])
+    @space = Space.new(space_params)
     if @space.save
       redirect_to space_path(@space)
     else

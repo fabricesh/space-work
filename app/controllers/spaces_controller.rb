@@ -1,9 +1,5 @@
 class SpacesController < ApplicationController
 
-  def show
-    @space = Space.find(params[:id])
-  end
-
   def index
     @spaces = Space.all
   end
@@ -13,11 +9,17 @@ class SpacesController < ApplicationController
     @space_types = ["Local entier", "Espace privé", "Espace partagé"]
     @workers_number = ["pour 1 collaborateur"]
 
+
     20.times do |i|
       @workers_number << "pour #{i + 1} collaborateurs"
     end
     @workers_number.delete_at(1)
     @workers_number.delete_at(2)
+  end
+
+  def show
+    @space = Space.find(params[:id])
+    @reservation = Reservation.new
   end
 
   def photos

@@ -20,3 +20,7 @@ space = Space.create(
 space.save
 puts 'Finished'
 
+Space.create(title: "Le Wagon", localisation: "Paris, 11ème", availabilities: "Disponible dès maintenant", price: "50€", space_type: "Partagé", capacity: "10 personnes", image: "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558633729/wagon.001_xyypeg.png", user_id: 1)
+Space.create(title: "Le Wagon", localisation: "Paris, 11ème", availabilities: "Disponible dès maintenant", price: "50€", space_type: "Partagé", capacity: "10 personnes", image: "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558633729/wagon.001_xyypeg.png", user_id: 1)
+Space.create(title: "Le Wagon", localisation: "Paris, 11ème", availabilities: "Disponible dès maintenant", price: "50€", space_type: "Partagé", capacity: "10 personnes", image: "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558633729/wagon.001_xyypeg.png", user_id: 1)
+Space.create(title: "Le Wagon", localisation: "Paris, 11ème", availabilities: "Disponible dès maintenant", price: "50€", space_type: "Partagé", capacity: "10 personnes", image: "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558633729/wagon.001_xyypeg.png", user_id: 1)

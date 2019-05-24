@@ -1,7 +1,8 @@
 class SpacesController < ApplicationController
 
   def index
-    @spaces = Space.all
+    # @spaces = Space.all
+    @spaces = policy_scope(Space)
   end
 
   def new

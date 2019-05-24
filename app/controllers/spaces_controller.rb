@@ -1,4 +1,8 @@
 class SpacesController < ApplicationController
+  def index
+    @spaces = Space.all
+  end
+  
   def new
     @space = Space.new
     @space_types = ["Local entier", "Espace privé", "Espace partagé"]

@@ -1,7 +1,31 @@
 <h1> Votre WorkSpace </h1>
-
 <% @spaces.each do |space| %>
-     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
-    <%= link_to space.title, space_path(space) %>
-    </div>
- <%end %>
+<div class="card-product" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
+ <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg">
+
+  <div class="card-product-infos notification-content">
+    <h2><%=space.title %></h2>
+    <p><%= space.localisation %> <strong><%= space.capacity %></strong></p>
+  </div>
+
+  <div class = "notification-actions">
+    <a href="#"><%= link_to "Edit", space_path(space) %><i class="fas fa-pencil-alt"></i></a>
+    <a href="#"><%= link_to "Delete", dashboard_path,
+      methode: :destroy,
+      data: {confirm: "are you sure?"} %><i class="far fa-trash-alt"></i></a>
+  </div>
+
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-primary active">
+      <input type="radio" name="options" id="option1" autocomplete="off" checked> On line
+    </label>
+    <label class="btn btn-danger">
+      <input type="radio" name="options" id="option2" autocomplete="off"> Off Line
+    </label>
+  </div>
+
+</div>
+<%end%>
+
+
+

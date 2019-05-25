@@ -16,6 +16,7 @@ class SpacesController < ApplicationController
     end
     @workers_number.delete_at(1)
     @workers_number.delete_at(2)
+    authorize @space
   end
 
 
@@ -32,6 +33,7 @@ class SpacesController < ApplicationController
     else
       render :new
     end
+    authorize @space
   end
 
   def edit

@@ -5,6 +5,10 @@ class SpacePolicy < ApplicationPolicy
     end
   end
 
+  def create?
+    true
+  end
+
   def index?
     return true
   end

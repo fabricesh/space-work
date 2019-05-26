@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :spaces do
-    resources :reservations
+    resources :reservations, only: [:new, :create]
   end
 
   post "spaces/photos", to: "spaces#photos"

@@ -5,7 +5,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @space = Space.find(current_user.space[:id])
+    @space = Space.find(params[:id])
     @space.destroy
+  end
+
+  def online
+    @space = Space.find(params[:id])
+
+
   end
 end

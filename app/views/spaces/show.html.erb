@@ -14,6 +14,9 @@
       <p><%= @space.availabilities %>
 
       </p>
+      <p><%= @space.localisation %>
+
+      </p>
       <p><strong>Prix à la journée:</strong>
           <%= "#{@space.price} €" %>
       </p>
@@ -43,7 +46,13 @@
       <% end %>
     </div>
     </div>
-
+    <div
+      id="map"
+      style="width: 40%;
+      height: 400px;"
+      data-markers="<%= @marker.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
   </div>
 </div>
 

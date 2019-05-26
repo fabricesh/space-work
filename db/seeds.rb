@@ -57,7 +57,6 @@ space = Space.new(
   price: "50€",
   space_type: "Partagé",
   capacity: "10 personnes",
-  image: "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558633729/wagon.001_xyypeg.png",
   user_id: user.id
 
   )

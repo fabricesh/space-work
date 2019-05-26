@@ -18,6 +18,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'devise'
 gem 'carrierwave', '~> 1.2'
+gem 'bootstrap-datepicker-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

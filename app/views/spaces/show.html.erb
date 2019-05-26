@@ -21,8 +21,8 @@
 
   <h2>Selection des options de réservation</h2>
   <%= simple_form_for [@space, @reservation] do |f| %>
-    <%= f.input :start_day %>
-    <%= f.input :end_day %>
+    <%= f.input :start_day, as: :date, input_html: {class: "datepicker"} %>
+    <%= f.input :end_day, as: :date, input_html: {class: "datepicker"} %>
     <%= f.input :number_worker %>
     <%= f.button :submit, "Valider votre réservation", class: "btn-primary" %>
   <% end %>

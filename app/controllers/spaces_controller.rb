@@ -65,6 +65,10 @@ class SpacesController < ApplicationController
     @space = Space.new(params[:space])
   end
 
+  def offline
+
+  end
+
   private
 
   def space_params

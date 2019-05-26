@@ -40,21 +40,18 @@
 .notification .notification-actions a:hover {
   color: #555555;
 }
-.notification {
-  text-decoration:
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-  background: white;
-  padding: 8px 16px;
-  border: 1px solid rgb(235,235,235);
-}
+
 
 .notification .notification-content {
   flex-grow: 1;
   padding: 0 24px;
 }
 
+.notification{
+  display: flex;
+  text-align: space-between;
+
+}
 .notification p {
   margin: 0;
   line-height: 1.4;
@@ -65,7 +62,7 @@
   font-weight: bold;
 }
 .notification .notification-actions {
-  opacity: 0;
+  opacity: 0.3;
   display: flex;
   transition: ease .3s;
 }

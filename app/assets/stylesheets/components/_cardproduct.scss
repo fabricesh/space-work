@@ -1,12 +1,12 @@
 .card-product {
   margin-top: 20px;
+  margin-bottom: 20px;
   overflow: hidden;
+  display: flex;
   //height: 510px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+  //align-items: center;
 }
 .card-photo-index {
   background-size: cover;
@@ -25,8 +25,8 @@
 }
 
 .card-product img {
-  height: 100%;
-  width: 120px;
+  height: 160px;
+  width: 160px;
   object-fit: cover;
 }
 
@@ -57,5 +57,10 @@
 
 .card-info {
   margin: 9px 0;
+}
+
+.card-edit {
+  align-items: center;
+  vertical-align: bottom;
 }
 

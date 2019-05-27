@@ -1,5 +1,4 @@
 <div class="container">
-
   <h1> Vos espaces de Co-Working</h1>
   <% @spaces.each do |space| %>
     <div class="card-product" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1))">
@@ -9,7 +8,7 @@
       </div>
       <!-- Flex-box1 -->
       <!-- Co-working specifications -->
-      <div class="d-flex justify-content-between w-100 h-100 d-inline-block">
+      <div class="d-flex justify-content-between w-100 h-100 d-inline-block information-card">
         <div class="card-product-infos notification-content py-0">
           <h2><%=space.title %></h2>
           <p><%= space.localisation %></p>

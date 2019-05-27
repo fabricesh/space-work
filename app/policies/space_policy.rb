@@ -17,6 +17,34 @@ class SpacePolicy < ApplicationPolicy
     return true
   end
 
+  def create_space?
+    return true
+  end
+
+  def photos?
+    return true
+  end
+
+  def update_photos?
+    return true
+  end
+
+  def description?
+    return true
+  end
+
+  def update_description?
+    return true
+  end
+
+  def parameters?
+    return true
+  end
+
+  def update_parameters?
+    return true
+  end
+
   def edit?
     record.user == user
   end

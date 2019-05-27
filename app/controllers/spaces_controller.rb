@@ -18,12 +18,55 @@ class SpacesController < ApplicationController
     @workers_number.delete_at(2)
   end
 
-  def create
-    @space = Space.new(params[:space])
+  def create_space
+    @space = Space.new(space_params)
+    @space.user = current_user
     if @space.save
-      redirect_to space_path(@space)
+      redirect_to add_photos_path(@space)
     else
-      render :new
+      raise
+    end
+  end
+
+  def photos
+    @space = Space.find(params[:id])
+  end
+
+  def update_photos
+    @space = Space.find(params[:id])
+    @space.update(space_params)
+    if @space.save
+      redirect_to add_description_path(@space)
+    else
+      raise
+    end
+  end
+
+  def description
+    @space = Space.find(params[:id])
+  end
+
+  def update_description
+    @space = Space.find(params[:id])
+    @space.update(space_params)
+    if @space.save
+      redirect_to add_parameters_path(@space)
+    else
+      raise
+    end
+  end
+
+  def parameters
+    @space = Space.find(params[:id])
+  end
+
+  def update_parameters
+    @space = Space.find(params[:id])
+    @space.update(space_params)
+    if @space.save
+      redirect_to root_path
+    else
+      raise
     end
   end
 
@@ -45,30 +88,9 @@ class SpacesController < ApplicationController
     @space.destroy
   end
 
-  def photos
-    @space = Space.new(space_params)
-  end
-
-  def description
-    @space = Space.new(space_params)
-  end
-
-  def title
-    @space = Space.new(space_params)
-  end
-
-  def create
-    @space = Space.new(space_params)
-    if @space.save
-      redirect_to space_path(@space)
-    else
-      render :new
-    end
-  end
-
   private
 
   def space_params
-    params.require(:space).permit(:title, :localisation, :availabilities, :price, :space_type, :capacity, :photo)
+    params.require(:space).permit(:title, :localisation, :availabilities, :description, :price, :space_type, :capacity, :photo)
   end
 end

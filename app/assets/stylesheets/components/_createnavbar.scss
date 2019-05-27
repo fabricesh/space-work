@@ -15,3 +15,12 @@
     position: absolute;
     border-right: 0.3px solid rgb(220, 224, 224);
 }
+
+._active-loading-bar-without-radius {
+    display: inline-block;
+    height: 10px;
+    position: absolute;
+    background-color: rgb(0, 132, 137);
+    border-right: 0.3px solid rgb(0, 132, 137);
+}
+

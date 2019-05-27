@@ -19,6 +19,7 @@ gem 'webpacker'
 gem 'devise'
 gem 'geocoder'
 
+
 gem 'pundit'
 
 gem 'carrierwave', '~> 1.2'

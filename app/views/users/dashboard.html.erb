@@ -1,31 +1,47 @@
-<h1> Votre WorkSpace </h1>
-<% @spaces.each do |space| %>
-<div class="card-product" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
- <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg">
+<div class="container">
 
-  <div class="card-product-infos notification-content">
-    <h2><%=space.title %></h2>
-    <p><%= space.localisation %> <strong><%= space.capacity %></strong></p>
-  </div>
-
-  <div class = "notification-actions">
-    <a href="#"><%= link_to "Edit", space_path(space) %><i class="fas fa-pencil-alt"></i></a>
-    <a href="#"><%= link_to "Delete", dashboard_path,
-      methode: :destroy,
-      data: {confirm: "are you sure?"} %><i class="far fa-trash-alt"></i></a>
-  </div>
-
-  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-primary active">
-      <input type="radio" name="options" id="option1" autocomplete="off" checked> On line
-    </label>
-    <label class="btn btn-danger">
-      <input type="radio" name="options" id="option2" autocomplete="off"> Off Line
-    </label>
-  </div>
-
+  <h1> Vos espaces de Co-Working</h1>
+  <% @spaces.each do |space| %>
+    <div class="card-product" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1))">
+      <!-- Co-working image -->
+      <div class="card-photo-index" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path space.photo, height: 300, width: 400, crop: :fill %>')">
+        <p class="card-title"><%= space.title %></p>
+      </div>
+      <!-- Flex-box1 -->
+      <!-- Co-working specifications -->
+      <div class="d-flex justify-content-between w-100 h-100 d-inline-block">
+        <div class="card-product-infos notification-content py-0">
+          <h2><%=space.title %></h2>
+          <p><%= space.localisation %></p>
+          <p><%= "Capacité : #{space.capacity}" %></p>
+          <p><%= "Prix mensuel : #{space.price} €" %></p>
+          <%= link_to "Voir mon annonce", space_path(space) %>
+        </div>
+        <!-- Flex box 2-->
+        <div class="d-flex">
+          <!-- Co-corking actions (delete/modify) -->
+          <div class = "notification-actions mx-5">
+            <p><%= link_to "Modifier", space_path(space) %></p>
+            <p><%= link_to "Supprimer", dashboard_path,
+              methode: :destroy,
+              data: {confirm: "are you sure?"} %></p>
+          </div>
+          <!-- Published / unpublished -->
+          <span>
+            <div class="btn-group btn-group-toggle mr-5" data-toggle="buttons">
+              <label class="btn btn-primary active">
+                <input type="radio" name="options" id="option1" autocomplete="off" checked> Publié
+              </label>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+  <%end%>
 </div>
-<%end%>
-
-
+<!-- <label class="btn btn-danger">
+  <input type="radio" name="options" id="option2" autocomplete="off"> Off Line
+</label> -->
+<!-- <i class="fas fa-pencil-alt"></i> -->
+<!-- <i class="far fa-trash-alt"></i> -->
 

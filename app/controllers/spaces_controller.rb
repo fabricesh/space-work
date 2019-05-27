@@ -51,6 +51,7 @@ class SpacesController < ApplicationController
   #saving of the new space
   def create_space
     @space = Space.new(space_params)
+    authorize @space
     @space.user = current_user
     if @space.save
       redirect_to add_photos_path(@space)
@@ -62,11 +63,13 @@ class SpacesController < ApplicationController
   # adding photos to the new space
   def photos
     @space = Space.find(params[:id])
+    authorize @space
   end
 
   # saving the photos
   def update_photos
     @space = Space.find(params[:id])
+    authorize @space
     @space.update(space_params)
     if @space.save
       redirect_to add_description_path(@space)
@@ -78,11 +81,13 @@ class SpacesController < ApplicationController
   # adding title and description to the new space
   def description
     @space = Space.find(params[:id])
+    authorize @space
   end
 
   # saving of the title and the description
   def update_description
     @space = Space.find(params[:id])
+    authorize @space
     @space.update(space_params)
     if @space.save
       redirect_to add_parameters_path(@space)
@@ -94,18 +99,19 @@ class SpacesController < ApplicationController
   # adding availabilities and price
   def parameters
     @space = Space.find(params[:id])
+    authorize @space
   end
 
   # saving availabilities and price
   def update_parameters
     @space = Space.find(params[:id])
+    authorize @space
     @space.update(space_params)
     if @space.save
       redirect_to root_path
     else
       render :parameters
     end
-    authorize @space
   end
 
   private

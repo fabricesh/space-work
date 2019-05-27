@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'users/dashboard'
   devise_for :users
-  root to: 'spaces#index'
+  root to: 'pages#home'
   get "spaces/new", to: "spaces#new"
   post "spaces/photos", to: "spaces#create_space"
   get "spaces/:id/photos", to: "spaces#photos", as: "add_photos"

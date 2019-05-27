@@ -51,15 +51,18 @@
     </div>
     <div class="reservation-option" style="flex: 0 0 38%">
       <h2>Options de réservation</h2>
-      <%= simple_form_for [@space, @reservation] do |f| %>
-        <%= f.input :start_day %>
-        <%= f.input :end_day %>
-        <%= f.input :number_worker %>
-        <%= f.button :submit, "Valider vos options", class: "btn-primary" %>
+      <%= simple_form_for [@space, @reservation], :url => {:action => "update_parameters"}  do |f| %>
+        <%= f.input :reservation_range, label: "Dates", placeholder: "Sélectionnez des dates", as: :string, input_html: { id: "datepicker" } %>
+        <%= f.input :number_worker, label: "Nombre de places" %>
+        <%= f.button :submit, "Continuer", class: "btn-primary" %>
       <% end %>
     </div>
   </div>
 </div>
 
+<%#= simple_form_for [@space, @reservation] do |f| %>
+        <%#= f.input :start_day %>
+        <%#= f.input :end_day %>
 
+        <%#= f.button :submit, "Valider vos options", class: "btn-primary" %>
 

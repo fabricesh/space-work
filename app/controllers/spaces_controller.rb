@@ -45,7 +45,9 @@ class SpacesController < ApplicationController
     @space = Space.find(params[:id])
     authorize @space
     if @space.update(space_params)
-      redirect_to space_path(@space)
+      flash[:notice] = "Votre Space-Work est à jour !"
+      redirect_to dashboard_path
+
     else
       render :edit
     end
@@ -54,6 +56,9 @@ class SpacesController < ApplicationController
   def destroy
     @space = Space.find(params[:id])
     @space.destroy
+    authorize @space
+    flash[:notice] = "Votre Space-Work à été supprimé"
+    redirect_to dashboard_path
   end
 
   def photos

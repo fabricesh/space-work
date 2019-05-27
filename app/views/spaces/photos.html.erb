@@ -2,7 +2,7 @@
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
     <div class="navbar-brand">
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" />
-      Etape 2 : Donnez le ton
+      Etape 2 : Ajoutez des photos
     </div>
   </div>
     <div class="_active-loading-bar" style="width: 33.3333%; left: 0%; max-width: 100%;"></div>
@@ -14,10 +14,10 @@
       <div style="margin-top: 8px; margin-bottom: 24px;">
         <div class="_description">Les photos aident les collaborateurs à se projeter dans votre espace de travail. Vous pouvez commencer par une photo, puis en ajouter d'autres après la publication.</div>
         </div>
-        <%= simple_form_for @space, :url => {:action => "description"} do |f| %>
-          <%= f.input :photo %>
+        <%= simple_form_for @space, :url => {:action => "update_photos"} do |f| %>
+          <%= f.input :photo, label: false %>
           <%= f.input :photo_cache, as: :hidden %>
-          <%= f.submit %>
+          <%= f.button :submit, "Continuer", class: "btn-primary" %>
         <% end %>
     </div>
   </div>
@@ -29,3 +29,4 @@
     </div>
   </div>
 </div>
+

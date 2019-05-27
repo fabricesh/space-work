@@ -13,10 +13,13 @@
     <% exceptions = ["new", "photos", "description", "title", "parameters"] %>
     <% unless params[:controller] == "spaces" && exceptions.include?(params[:action]) %>
     <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
+
     <% end %>
+
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
-    <%= render 'shared/footer' %>
+
   </body>
 </html>

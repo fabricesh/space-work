@@ -1,0 +1,32 @@
+<div class="bg-white">
+  <div class="bg-white row row-condensed">
+    <div class="col-md-7">
+      <div class="p-5 m-3">
+        <div class="m-3 mb-5">
+          <h2> Mes informations</h2>
+        </div>
+        <div class="m-3">
+
+          <div class="h4 mb-4">Valider</div>
+            <div>
+              <div class="row row-condensed">
+                <div class="col-md-6 col-sm-12">
+                  <%= simple_form_for(@space) do |form| %>
+                  <%= form.input :title %>
+                  <%= form.input :localisation %>
+                  <%= form.input :availabilities %>
+                  <%= form.input :price %>
+                  <%= form.input :space_type %>
+                  <%= form.input :capacity %>
+                  <%= form.input :image %>
+
+                  <%= form.button :submit, "Voir toutes mes réservations", class: "btn-primary" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

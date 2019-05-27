@@ -17,11 +17,13 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'devise'
+gem 'geocoder'
 
 
 gem 'pundit'
 
 gem 'carrierwave', '~> 1.2'
+gem 'bootstrap-datepicker-rails'
 
 
 group :development do

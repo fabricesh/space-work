@@ -11,22 +11,9 @@
 
     </div>
 
+
     <div class="card-product-infos">
-     <% if  %>
-      <%= simple_form_for(@space) do |form| %>
-        <%= form.input :title %>
-        <%= form.input :localisation %>
-        <%= form.input :availabilities %>
-        <%= form.input :price %>
-        <%= form.input :space_type %>
-        <%= form.input :capacity %>
 
-
-        <%= form.button :submit, "Modifer", class: "btn-primary" %>
-        <% end %>
-
-
-     <% else %>
 
       <h1><%= @space.title %></h1>
       <p><%= @space.availabilities %>
@@ -46,7 +33,7 @@
       <p> <strong>Places disponibles:</strong>
           <%= @space.capacity %>
       </p>
-     <% end %>
+
     </div>
   </div>
   <div class="d-flex justify-content-between mt-1 card-info">

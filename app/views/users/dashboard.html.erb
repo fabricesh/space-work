@@ -1,5 +1,5 @@
 <div class="container">
-  <% if  @spaces.empty? %>
+  <% if @spaces.empty? %>
      <p class="btn btnprimary">Add a Working Space</p>
   <%else %>
      <h1> Vos espaces de Co-Working</h1>
@@ -23,7 +23,7 @@
           <div class="d-flex">
             <!-- Co-corking actions (delete/modify) -->
             <div class = "notification-actions mx-5">
-              <p><%= link_to "Modifier", space_path(space) %></p>
+              <p><%= link_to "Modifier", edit_space_path(space) %></p>
               <p><%= link_to "Supprimer", space_path(space),
                 method: :delete,
                 data: {confirm: "are you sure?"} %></p>

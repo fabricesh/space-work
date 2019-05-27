@@ -12,9 +12,9 @@ user = User.new(
   password: "azerty"
   )
 user.save
-puts 'Creating fake spaces...'
 
-puts 'Creating User...'
+
+
 user1 = User.new(
   email: "qsdfg@gmail.com",
   password: "qsdfg"

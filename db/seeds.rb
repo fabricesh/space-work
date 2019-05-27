@@ -16,7 +16,7 @@ puts 'Creating fake spaces...'
 
 space = Space.new(
   title: "Le Wagon",
-  localisation: "Paris, 11ème",
+  localisation: "16 Villa Gaudelet, Paris",
   availabilities: "Disponible dès maintenant",
   price: "98€",
   space_type: "Partagé",
@@ -28,7 +28,7 @@ space.save
 
 space = Space.new(
   title: "Welcome to the jungle",
-  localisation: "Paris, 10ème",
+  localisation: "16 Rue du Mail, Paris",
   availabilities: "Disponible dès maintenant",
   price: "140€",
   space_type: "Partagé",
@@ -40,7 +40,7 @@ space.save
 
 space = Space.new(
   title: "Numa",
-  localisation: "Paris, 9ème",
+  localisation: "39 Rue du Caire, Paris",
   availabilities: "Disponible dès maintenant",
   price: "150€",
   space_type: "Partagé",
@@ -52,7 +52,7 @@ space.save
 
 space = Space.new(
   title: "Les 2 au coin",
-  localisation: "Paris, 3ème",
+  localisation: "7 Rue Notre Dame de Bonne Nouvelle, Paris",
   availabilities: "Disponible dès maintenant",
   price: "50€",
   space_type: "Partagé",
@@ -65,7 +65,7 @@ space.save
 
 space = Space.new(
   title: "Anticafé",
-  localisation: "Paris, 8ème",
+  localisation: "79 Rue Quincampoix, Paris",
   availabilities: "Disponible dès maintenant",
   price: "80€",
   space_type: "Partagé",
@@ -77,7 +77,7 @@ space.save
 
 space = Space.new(
   title: "Dojocrea",
-  localisation: "Paris, 6ème",
+  localisation: "24 Rue Béranger, Paris",
   availabilities: "Disponible dès maintenant",
   price: "40€",
   space_type: "Partagé",
@@ -89,7 +89,7 @@ space.save
 
 space = Space.new(
   title: "Cosy Corner",
-  localisation: "Paris, 3ème",
+  localisation: " 8 Rue Saint-Martin, Paris",
   availabilities: "Disponible dès maintenant",
   price: "80€",
   space_type: "Partagé",
@@ -101,7 +101,7 @@ space.save
 
 space = Space.new(
   title: "Labo de l’Edition",
-  localisation: "Paris, 5ème",
+  localisation: " 2 Rue Saint-Médard, Paris",
   availabilities: "Disponible dès maintenant",
   price: "90€",
   space_type: "Partagé",
@@ -113,7 +113,7 @@ space.save
 
 space = Space.new(
   title: "Mozaïk",
-  localisation: "Paris, 8ème",
+  localisation: " 41 Rue de la Chaussée d'Antin, Paris",
   availabilities: "Disponible dès maintenant",
   price: "90€",
   space_type: "Partagé",
@@ -125,7 +125,7 @@ space.save
 
 space = Space.new(
   title: "CoworkCrèche",
-  localisation: "Paris, 3ème",
+  localisation: "89 Rue du Faubourg Saint-Antoine, Paris",
   availabilities: "Disponible dès maintenant",
   price: "80€",
   space_type: "Partagé",
@@ -149,7 +149,7 @@ space.save
 
 space = Space.new(
   title: "Coworkshop",
-  localisation: "Paris, 8ème",
+  localisation: "20 Rue Jean et Marie Moinon, Paris",
   availabilities: "Disponible dès maintenant",
   price: "90€",
   space_type: "Partagé",

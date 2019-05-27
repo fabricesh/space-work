@@ -15,6 +15,7 @@ user = User.new(
 user.save
 puts 'Creating fake spaces...'
 
+
 space = Space.new(
   title: "Le Wagon",
   localisation: "16 Villa Gaudelet, Paris",
@@ -26,6 +27,7 @@ space = Space.new(
   )
 space.remote_photo_url = "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558633729/wagon.001_xyypeg.png"
 space.save
+
 
 space = Space.new(
   title: "Welcome to the jungle",

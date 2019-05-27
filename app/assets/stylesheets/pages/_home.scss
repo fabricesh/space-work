@@ -48,6 +48,10 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+.banner-text {
+  color: #1D3B83;
+  font-weight: bolder;
+}
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {

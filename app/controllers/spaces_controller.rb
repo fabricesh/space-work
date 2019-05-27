@@ -12,6 +12,18 @@ class SpacesController < ApplicationController
     skip_authorization
   end
 
+  def create_reservation
+    skip_authorization
+    @reservation = Reservation.new(reservation_params)
+    @reservation.user = current_user
+    @reservation.space = Space.find(params[:id])
+    if @reservation.save
+      redirect_to new_reservation_path(@reservation)
+    else
+      raise
+    end
+  end
+
   def edit
     @space = Space.find(params[:id])
     authorize @space
@@ -118,5 +130,9 @@ class SpacesController < ApplicationController
 
   def space_params
     params.require(:space).permit(:title, :localisation, :availabilities, :description, :price, :space_type, :capacity, :photo)
+  end
+
+  def reservation_params
+    params.require(:reservation).permit(:period, :total_price, :user_id, :space_id, :number_worker)
   end
 end

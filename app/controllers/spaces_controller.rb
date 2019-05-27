@@ -33,7 +33,8 @@ class SpacesController < ApplicationController
     @space = Space.find(params[:id])
     authorize @space
     if @space.update(space_params)
-      redirect_to space_path(@space)
+      redirect_to dashboard_path
+      flash[:notice] = "Votre Space-Work est à jour !"
     else
       render :edit
     end
@@ -42,6 +43,9 @@ class SpacesController < ApplicationController
   def destroy
     @space = Space.find(params[:id])
     @space.destroy
+    authorize @space
+    flash[:notice] = "Votre Space-Work à été supprimé"
+    redirect_to dashboard_path
   end
 
   def offline
@@ -114,13 +118,14 @@ class SpacesController < ApplicationController
     authorize @space
   end
 
-  # saving availabilities and price
+  # saving availabilities and price update index
   def update_parameters
     @space = Space.find(params[:id])
     authorize @space
     @space.update(space_params)
     if @space.save
-      redirect_to root_path
+      redirect_to dashboard_path
+      flash[:notice] = "Votre Space-Work est à jour !"
     else
       render :parameters
     end

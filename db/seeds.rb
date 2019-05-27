@@ -1,3 +1,4 @@
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -12,7 +13,16 @@ user = User.new(
   password: "azerty"
   )
 user.save
+
+
+
+user1 = User.new(
+  email: "qsdfg@gmail.com",
+  password: "qsdfg"
+  )
+user1.save
 puts 'Creating fake spaces...'
+
 
 space = Space.new(
   title: "Le Wagon",
@@ -21,10 +31,11 @@ space = Space.new(
   price: "98€",
   space_type: "Partagé",
   capacity: "10 personnes",
-  user_id: user.id
+  user_id: user1.id
   )
 space.remote_photo_url = "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558633729/wagon.001_xyypeg.png"
 space.save
+
 
 space = Space.new(
   title: "Welcome to the jungle",

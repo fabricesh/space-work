@@ -7,6 +7,8 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.3'
 gem 'redis'
+gem 'pundit'
+gem 'flatpickr'
 
 gem 'cloudinary', '~> 1.9.1'
 gem 'dotenv-rails', groups: [:development, :test]
@@ -17,11 +19,13 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'devise'
+gem 'geocoder'
 
 
 gem 'pundit'
 
 gem 'carrierwave', '~> 1.2'
+gem 'bootstrap-datepicker-rails'
 
 
 group :development do

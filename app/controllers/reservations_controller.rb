@@ -1,14 +1,23 @@
 class ReservationsController < ApplicationController
+  before_action :set_space
   def new
+    @space = Space.find(params[:space_id])
     @reservation = Reservation.new
+    skip_authorization
   end
-  # def create
-  #     @space = Space.new(params[:space])
-  #     if @space.save
-  #       redirect_to space_path(@space)
-  #     else
-  #       render :new
-  #     end
-  #   end
+
+  def create
+    @reservation = Reservation.new
+    @reservation.space = Space.find(params[:space_id])
+    @reservation.save
+    redirect_to space_path(@space)
+    skip_authorization
+  end
+
+  private
+  def set_space
+    @space = Space.find(params[:space_id])
+  end
+end
 
 end

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   patch "spaces/:id/", to: "spaces#update_parameters"
   resources :users
   get "/dashboard", to: "users#dashboard"
+
   root to: 'pages#home'
   resources :spaces do
     resources :reservations, only: [:new, :create]

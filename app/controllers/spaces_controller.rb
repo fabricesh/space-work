@@ -23,7 +23,6 @@ class SpacesController < ApplicationController
     if @space.update(space_params)
       flash[:notice] = "Votre Space-Work est à jour !"
       redirect_to dashboard_path
-
     else
       render :edit
     end

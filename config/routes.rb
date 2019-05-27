@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/dashboard'
   devise_for :users
   root to: 'spaces#index'
   get "spaces/new", to: "spaces#new"
@@ -9,7 +10,12 @@ Rails.application.routes.draw do
   patch "spaces/:id/parameters", to: "spaces#update_description"
   get "spaces/:id/parameters", to: "spaces#parameters", as: "add_parameters"
   patch "spaces/:id/", to: "spaces#update_parameters"
-  resources :spaces
-
+  resources :users
+  get "/dashboard", to: "users#dashboard"
+  root to: 'pages#home'
+  resources :spaces do
+    resources :reservations, only: [:new, :create]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get    "spaces/:id",      to: "spaces#show"
 end

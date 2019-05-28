@@ -55,14 +55,16 @@
     </div>
     <div class="reservation-option" style="flex: 0 0 38%">
       <h2>Options de réservation</h2>
-      <%= simple_form_for [@space, @reservation], :url => {:action => "create_reservation"}  do |f| %>
+      <%= simple_form_for [@space, @reservation], :url => {:controller => "reservations", :action => "preview"}  do |f| %>
         <%= f.input :period, label: "Dates", placeholder: "Sélectionnez des dates", as: :string, input_html: { id: "datepicker" } %>
         <%= f.input :number_worker, label: "Nombre de places" %>
+        <input type="hidden" value="<%= @space.id %>" name="space_id">
         <%= f.button :submit, "Continuer", class: "btn-primary" %>
       <% end %>
     </div>
   </div>
 </div>
+
 
 
 

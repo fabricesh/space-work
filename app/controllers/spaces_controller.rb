@@ -10,20 +10,11 @@ class SpacesController < ApplicationController
     # @review = Review.new
 
     # @space = Space.where.not(latitude: nil, longitude: nil)
+
+    @reservation = Reservation.new
+
     @marker = [{ lat: @space.latitude, lng: @space.longitude }]
     skip_authorization
-  end
-
-  def create_reservation
-    skip_authorization
-    @reservation = Reservation.new(reservation_params)
-    @reservation.user = current_user
-    @reservation.space = Space.find(params[:id])
-    if @reservation.save
-      redirect_to new_reservation_path(@reservation)
-    else
-      raise
-    end
   end
 
   def edit

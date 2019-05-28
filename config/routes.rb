@@ -16,12 +16,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   post "reservation/:id/", to: "spaces#create_reservation"
   get "reservation/:id/", to: "reservations#new", as: "new_reservation"
+
   resources :spaces do
-      resources :reservations, only: [:create, :show]
+      resources :reservations, only: :create
   end
-  # resources :spaces do
-  #     resources :reviews, only: :create
-  # end
+  resources :spaces do
+      resources :reviews, only: :create
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get    "spaces/:id",      to: "spaces#show"
 

@@ -3497,6 +3497,11 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
 
+hello-week@^2.10.2:
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/hello-week/-/hello-week-2.10.2.tgz#08dcc69e09efb4a25265bba334ce4b1935b85174"
+  integrity sha512-F88HfVXYIsAZWPU3vLYx4lJZ1ioxxuuZlrUhQfqYoPKXA9hvCZcnb56HxgnfqQxTfZFKlZ3i2d40MBGQbDnc0g==
+
 hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"

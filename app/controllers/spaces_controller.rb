@@ -12,6 +12,18 @@ class SpacesController < ApplicationController
     skip_authorization
   end
 
+  def create_reservation
+    skip_authorization
+    @reservation = Reservation.new(reservation_params)
+    @reservation.user = current_user
+    @reservation.space = Space.find(params[:id])
+    if @reservation.save
+      redirect_to new_reservation_path(@reservation)
+    else
+      raise
+    end
+  end
+
   def edit
     @space = Space.find(params[:id])
     authorize @space
@@ -21,7 +33,8 @@ class SpacesController < ApplicationController
     @space = Space.find(params[:id])
     authorize @space
     if @space.update(space_params)
-      redirect_to space_path(@space)
+      redirect_to dashboard_path
+      flash[:notice] = "Votre Space-Work est à jour !"
     else
       render :edit
     end
@@ -30,6 +43,9 @@ class SpacesController < ApplicationController
   def destroy
     @space = Space.find(params[:id])
     @space.destroy
+    authorize @space
+    flash[:notice] = "Votre Space-Work à été supprimé"
+    redirect_to dashboard_path
   end
 
   def offline
@@ -102,13 +118,14 @@ class SpacesController < ApplicationController
     authorize @space
   end
 
-  # saving availabilities and price
+  # saving availabilities and price update index
   def update_parameters
     @space = Space.find(params[:id])
     authorize @space
     @space.update(space_params)
     if @space.save
-      redirect_to root_path
+      redirect_to dashboard_path
+      flash[:notice] = "Votre Space-Work est à jour !"
     else
       render :parameters
     end
@@ -118,5 +135,9 @@ class SpacesController < ApplicationController
 
   def space_params
     params.require(:space).permit(:title, :localisation, :availabilities, :description, :price, :space_type, :capacity, :photo)
+  end
+
+  def reservation_params
+    params.require(:reservation).permit(:period, :total_price, :user_id, :space_id, :number_worker)
   end
 end

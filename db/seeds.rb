@@ -13,6 +13,8 @@ user = User.new(
   password: "azerty"
   )
 user.save
+
+
 puts 'Creating fake spaces...'
 
 

@@ -64,9 +64,20 @@
   </div>
 </div>
 
-<%#= simple_form_for [@space, @reservation] do |f| %>
-        <%#= f.input :start_day %>
-        <%#= f.input :end_day %>
 
-        <%#= f.button :submit, "Valider vos options", class: "btn-primary" %>
+
+<h1><%= @space.name %>
+<h2>
+  <%= pluralize @space.reviews.size, "review" %>
+</h2>
+
+<div id="reviews">
+  <% if @space.reviews.blank? %>
+    Be the first to leave a review for <%= @space.name %>
+  <% else %>
+    <% @space.reviews.each do |review| %>
+      <%= render 'reviews/show', review: review %>
+    <% end %>
+  <% end %>
+</div>
 

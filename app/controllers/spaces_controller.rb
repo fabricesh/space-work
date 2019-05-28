@@ -2,6 +2,7 @@ class SpacesController < ApplicationController
   def index
     # @spaces = Space.all
     @spaces = policy_scope(Space)
+    @reservations = policy_scope(Reservation)
   end
 
   def show
@@ -9,6 +10,19 @@ class SpacesController < ApplicationController
     @reservation = Reservation.new
     @marker = [{ lat: @space.latitude, lng: @space.longitude }]
     skip_authorization
+  end
+
+  def create_reservation
+    skip_authorization
+    @reservation = Reservation.new(reservation_params)
+    @reservation.user = current_user
+    @reservation.space = Space.find(params[:id])
+    if @reservation.save
+      redirect_to dashboard_path(@reservation)
+      flash[:notice] = "Votre demande de réservation est en attente de validation !"
+    else
+      render :new
+    end
   end
 
   def edit
@@ -116,6 +130,36 @@ class SpacesController < ApplicationController
     else
       render :parameters
     end
+  end
+
+  def availability
+    @space = Space.find(params[:id])
+    authorize @space
+    if params[:value] == true
+      @space.online = true
+    else
+      @space.online = false
+    end
+    @space.save
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def online
+    @space = Space.find(params[:id])
+    authorize @space
+    @space.online = true
+    @space.save
+    redirect_to dashboard_path
+  end
+
+  def offline
+    @space = Space.find(params[:id])
+    authorize @space
+    @space.online = false
+    @space.save
+    redirect_to dashboard_path
   end
 
   private

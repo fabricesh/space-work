@@ -8,6 +8,26 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 import { fp } from '../plugins/flatpickr'
 import "jquery-bar-rating/dist/themes/css-stars.css";
 import { initStarRating } from '../plugins/init_star_rating';
+import { toggle } from '../plugins/toggle';
+toggle();
+
+
+const fp = flatpickr("#datepicker", {
+  altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y-m-d",
+  mode: "range",
+    minDate: "today",
+    dateFormat: "Y-m-d",
+    disable: [
+        function(date) {
+            // disable every multiple of 8
+            return !(date.getDate() % 8);
+        }
+    ]
+});
+
+
 initMapbox();
 initAutocomplete();
 initStarRating();

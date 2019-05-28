@@ -6,8 +6,9 @@ class SpacesController < ApplicationController
 
   def show
     @space = Space.find(params[:id])
-    @reservation = Reservation.new
-    @review = Review.new
+    # @reservation = Reservation.new
+    # @review = Review.new
+
     # @space = Space.where.not(latitude: nil, longitude: nil)
     @marker = [{ lat: @space.latitude, lng: @space.longitude }]
     skip_authorization
@@ -140,5 +141,9 @@ class SpacesController < ApplicationController
 
   def reservation_params
     params.require(:reservation).permit(:period, :total_price, :user_id, :space_id, :number_worker)
+  end
+
+  def review_params
+    params.require(:review).permit(:content)
   end
 end

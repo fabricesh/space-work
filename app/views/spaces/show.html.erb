@@ -66,21 +66,21 @@
 
 
 
-<h1><%= @space.title %>
+<!-- <h1><%#= @space.title %>
 <h2>
-  <%= pluralize @space.reviews.size, "review" %>
+  <%#= pluralize @space.reviews.size, "review" %>
 </h2>
 
 <div id="reviews">
-  <% if @space.reviews.blank? %>
+  <%# if @reviews.blank? %>
     Be the first to leave a review for <%= @space.title %>
-  <% else %>
-    <% @space.reviews.each do |review| %>
-      <%= render 'reviews/show', review: review %>
-    <% end %>
-  <% end %>
-</div>
+  <%# else %>
+    <%# @reviews.each do |review| %>
+      <%#= render 'reviews/show', review: review %>
+    <%# end %>
+  <%# end %>
+</div> -->
 
-<%= render 'reviews/form', space: @space, review: @review %>
+<%#= render 'reviews/form', space: @space, review: @review %>
 
 

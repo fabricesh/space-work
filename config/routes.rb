@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   patch "spaces/:id/parameters", to: "spaces#update_description"
   get "spaces/:id/parameters", to: "spaces#parameters", as: "add_parameters"
   patch "spaces/:id/", to: "spaces#update_parameters"
+
+  get "spaces/:id/setonline", to: "spaces#online", as: "online"
+  get "spaces/:id/setoffline", to: "spaces#offline", as: "offline"
+
+
   resources :users
   get "/dashboard", to: "users#dashboard"
 

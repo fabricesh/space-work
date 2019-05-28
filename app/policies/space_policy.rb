@@ -1,7 +1,7 @@
 class SpacePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(online: true)
     end
   end
 
@@ -45,6 +45,10 @@ class SpacePolicy < ApplicationPolicy
     return true
   end
 
+  def availability?
+    return true
+  end
+
   def edit?
     record.user == user
   end
@@ -56,6 +60,14 @@ class SpacePolicy < ApplicationPolicy
   end
 
   def destroy?
+    record.user == user
+  end
+
+  def online?
+    record.user == user
+  end
+
+  def offline?
     record.user == user
   end
 end

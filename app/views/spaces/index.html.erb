@@ -2,6 +2,17 @@
   <div class="container">
     <h1>Space Work</h1>
     <p>Trouvez votre <strong>espace de co-working</strong>.</p>
+
+ <!-- search bar   -->
+<%= form_tag spaces_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a space"
+      %>
+
+    <% end %>
+
   </div>
 </div>
 
@@ -10,8 +21,16 @@
   <div class="flex cards mt-3">
   <% @spaces.each do |space| %>
     <%= link_to space_path(space), class: "card" do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path space.photo, height: 300, width: 400, crop: :fill %>')">
-        <p class="card-title"><%= space.title %></p>
+      <div>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path space.photo, height: 300, width: 400, crop: :fill %>')">
+          <p class="card-title"><%= space.title %></p>
+        </div>
+        <div>
+          <p><%= space.price %></p>
+            <% if space.average_stars %>
+            <%= space.average_stars %>
+
+        </div>
       </div>
     <% end %>
   <% end %>

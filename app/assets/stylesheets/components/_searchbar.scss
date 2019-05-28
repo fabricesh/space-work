@@ -1,0 +1,30 @@
+.search-navbar {
+  border-radius: 50%;
+}
+/*#query {
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+}*/
+
+.search-container {
+  width: 25rem;
+  height: 100%;
+  margin: 0 1rem;
+  position: relative;
+  box-sizing: border-box;
+  font-family: 'Sarabun', sans-serif;
+  input {
+    border-radius: 22px;
+  }
+}
+
+.search-button {
+  height: 28px;
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  transition: all .2s;
+  transition-delay: .1s;
+  width: 28px;
+  border-color: white;
+}

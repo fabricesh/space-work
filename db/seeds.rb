@@ -14,11 +14,16 @@ user = User.new(
   )
 user.save
 
+user_renter = User.new(
+  email: "renter@gmail.com",
+  password: "renter"
+  )
+user_renter.save
 
 puts 'Creating fake spaces...'
 
 
-space = Space.new(
+space_one = Space.new(
   title: "Le Wagon",
   localisation: "16 Villa Gaudelet, Paris",
   availabilities: "Disponible dès maintenant",
@@ -27,9 +32,24 @@ space = Space.new(
   capacity: "10 personnes",
   user_id: user.id
   )
-space.remote_photo_url = "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558633729/wagon.001_xyypeg.png"
-space.save
+space_one.remote_photo_url = "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558633729/wagon.001_xyypeg.png"
+space_one.save
 
+review = Review.new(
+  stars: 5,
+  content: "J'adore cet endroit",
+  )
+review.space = space_one
+review.user = user_renter
+review.save
+
+review = Review.new(
+  stars: 4,
+  content: "J'adore cet endroit",
+  )
+review.space = space_one
+review.user = user_renter
+review.save
 
 space = Space.new(
   title: "Welcome to the jungle",

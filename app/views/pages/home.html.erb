@@ -2,7 +2,21 @@
   <div class="container">
     <h1>Space Work</h1>
     <p>Trouvez votre <strong>espace de co-working</strong>.</p>
-    <%= link_to "Rechercher", spaces_path, class: "btn btn-light" %>
+
+    <!-- button search -->
+    <div class=" search-container">
+      <%= form_tag spaces_path, class: "search-navbar", method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Recherchez par ville ou par nom..."
+        %>
+        <%= button_tag(type: "submit", class: "search-button") do %>
+            <i class="fas fa-search"></i>
+        <% end %>
+      <% end %>
+    </div>
+
   </div>
 </div>
 

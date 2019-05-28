@@ -24,3 +24,5 @@ const fp = flatpickr("#datepicker", {
 
 initMapbox();
 initAutocomplete();
+
+

@@ -6,6 +6,8 @@ import { initMapbox } from '../plugins/init_mapbox';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { fp } from '../plugins/flatpickr'
-
+import "jquery-bar-rating/dist/themes/css-stars.css";
+import { initStarRating } from '../plugins/init_star_rating';
 initMapbox();
 initAutocomplete();
+initStarRating();

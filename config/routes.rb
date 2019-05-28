@@ -16,11 +16,12 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   post "spaces/:id/", to: "reservations#preview"
   post "reservation/:id/", to: "reservations#create"
+  # get "spaces/:id/reviews", to: "reviews#new"
   resources :spaces do
     resources :reservations, only: :create
   end
   resources :spaces do
-    resources :reviews, only: :create
+    resources :reviews, only: [:new, :create]
   end
   # get "reservation/:id/", to: "reservations#new", as: "new_reservation"
 

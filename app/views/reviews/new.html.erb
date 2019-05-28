@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1>Create a new review</h1>
+      <%= simple_form_for [@space, @review], html: { class: "review_form" } do |f| %>
+        <%= f.input :content %>
+        <%= f.input :stars, collection: 1..5 %>
+        <%= f.button :submit, class: 'btn btn-primary d-none' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

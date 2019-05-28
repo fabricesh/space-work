@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'users/dashboard'
   devise_for :users
   root to: 'pages#home'
-  get "spaces/new", to: "spaces#new"
+  # get "spaces/new", to: "spaces#new"
   post "spaces/photos", to: "spaces#create_space"
   get "spaces/:id/photos", to: "spaces#photos", as: "add_photos"
   patch "spaces/:id/description", to: "spaces#update_photos"
@@ -14,11 +14,16 @@ Rails.application.routes.draw do
   get "/dashboard", to: "users#dashboard"
 
   root to: 'pages#home'
-  post "reservation/:id/", to: "spaces#create_reservation"
-  get "reservation/:id/", to: "reservations#new", as: "new_reservation"
+  post "spaces/:id/", to: "reservations#preview"
+  post "reservation/:id/", to: "reservations#create"
   resources :spaces do
-    resources :reservations, only: [:new, :create]
+    resources :reservations, only: :create
   end
+  resources :spaces do
+    resources :reviews, only: :create
+  end
+  # get "reservation/:id/", to: "reservations#new", as: "new_reservation"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get    "spaces/:id",      to: "spaces#show"
 

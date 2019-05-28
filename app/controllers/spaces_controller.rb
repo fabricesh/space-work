@@ -8,7 +8,6 @@ class SpacesController < ApplicationController
   def show
     @space = Space.find(params[:id])
     @reservation = Reservation.new
-    # @space = Space.where.not(latitude: nil, longitude: nil)
     @marker = [{ lat: @space.latitude, lng: @space.longitude }]
     skip_authorization
   end

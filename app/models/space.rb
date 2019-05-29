@@ -1,7 +1,7 @@
 class Space < ApplicationRecord
   belongs_to :user
-  has_many :reservations
-  has_many :reviews
+  has_many :reservations, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   geocoded_by :localisation
   after_validation :geocode, if: :will_save_change_to_localisation?
   mount_uploader :photo, PhotoUploader

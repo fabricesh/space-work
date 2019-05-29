@@ -1,0 +1,12 @@
+function onLine() {
+  const online = document.getElementById('<%=@space.id%>');
+  const onlineButton = online.querySelector('.btn-outline-success');
+  const offlineButton = online.querySelector('.btn-outline-warning');
+  const status = online.querySelector('.notification-actions');
+  onlineButton.classList.remove('d-none');
+  offlineButton.classList.add('d-none');
+  status.innerHTML = "Set offline";
+  //online.outerHTML('<%= j render "users/card-dashboard", space: @space %>');
+}
+
+onLine();

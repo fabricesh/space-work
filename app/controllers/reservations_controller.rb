@@ -24,6 +24,12 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def mes_demandes
+    skip_authorization
+    @reservations = current_user.reservations
+  end
+
+
   private
 
   def reservation_params

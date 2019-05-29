@@ -42,14 +42,15 @@ class SpacesController < ApplicationController
   end
 
   def destroy
-    @space = Space.find(params[:id])
-    @space.destroy
+   @space = Space.find(params[:id])
+   @space.destroy
     authorize @space
+      respond_to do |format|
+        format.html { redirect_to dashboard_path }
+        format.js
+      end
     flash[:notice] = "Votre Space-Work à été supprimé"
-    redirect_to dashboard_path
-  end
 
-  def offline
   end
 
   #creation of a new space with capacity, space_type and localisation
@@ -151,7 +152,10 @@ class SpacesController < ApplicationController
     authorize @space
     @space.online = true
     @space.save
-    redirect_to dashboard_path
+      respond_to do |format|
+        format.html { redirect_to dashboard_path }
+        format.js
+      end
   end
 
   def offline
@@ -159,7 +163,10 @@ class SpacesController < ApplicationController
     authorize @space
     @space.online = false
     @space.save
-    redirect_to dashboard_path
+    respond_to do |format|
+      format.html { redirect_to dashboard_path }
+      format.js
+    end
   end
 
   private

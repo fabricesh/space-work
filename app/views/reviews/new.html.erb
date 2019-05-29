@@ -5,7 +5,7 @@
       <%= simple_form_for [@space, @review], html: { class: "review_form" } do |f| %>
         <%= f.input :content %>
         <%= f.input :stars, collection: 1..5 %>
-        <%= f.button :submit, class: 'btn btn-primary d-none' %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>

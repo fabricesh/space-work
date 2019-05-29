@@ -8,44 +8,7 @@
     <% end %>
 
       <% @spaces.each do |space| %>
-        <div class="card-dash" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1))">
-          <!-- Co-working image -->
-          <div class="card-photo-dash" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%=   cl_image_path space.photo%>')">
-           <p class="card-title"><%= space.title %></p>
-          </div>
-
-         <!-- Flex-box1 -->
-          <!-- Co-working specifications -->
-          <div class="card-product-infos">
-            <div class="content">
-              <h3><%=space.title %></h3>
-              <p><%= space.localisation %></p>
-              <p><%= "Capacité : #{space.capacity}" %></p>
-              <p><%= "Prix mensuel : #{space.price} €" %></p>
-            </div>
-
-            <div>
-              <%= link_to "Voir mon annonce", space_path(space)  %>
-            </div>
-          </div>
-          <!-- Flex box 2-->
-            <!-- Co-corking actions (delete/modify) -->
-          <div class = "card-modif">
-            <a><%= link_to "Modifier", edit_space_path(space), class: "btn btn-outline-primary rounded p-2" %></a>
-            <a><%= link_to "Supprimer", space_path(space),class: "btn btn-outline-danger rounded p-2",
-              method: :delete,
-              data: {confirm: "are you sure?"} %></a>
-
-            <!-- Published / unpublished -->
-            <% if space.online %>
-              <a><%= link_to "Online", offline_path(space), class: "btn btn-outline-success rounded p-2"  %></a>
-              <p>Set Offline</>
-            <% else %>
-              <a><%= link_to "Offline", online_path(space), class: "btn btn-outline-warning rounded p-2"  %><a>
-              <p class="notification-actions"><i>Set Online<i></p>
-            <% end %>
-          </div>
-        </div>
+        <%= render "users/card-dashboard", space: space %>
       <% end %>
     </div>
   </div>

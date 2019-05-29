@@ -23,6 +23,19 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def mes_demandes
+    skip_authorization
+    @reservations = current_user.reservations
+  end
+
+  def destroy
+    @space = Space.find(params[:id])
+    @space.destroy
+    authorize @space
+    redirect_to dashboard_path
+    flash[:notice] = "Votre Space-Work à été supprimé"
+  end
+
   private
 
   def reservation_params

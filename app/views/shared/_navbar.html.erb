@@ -3,6 +3,23 @@
     <%= image_tag "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558730642/logo2_byzmr8.png" %>
     <% end %>
 
+    <% unless params[:controller] == "pages" && params[:action] == "home" %>
+      <!-- button search -->
+      <div class=" search-container">
+        <%= form_tag spaces_path, class: "search-navbar", method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Recherchez par ville ou par nom..."
+          %>
+          <%= button_tag(type: "submit", class: "search-button") do %>
+              <i class="fas fa-search"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+    <% end %>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,22 +27,32 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item active">
+        <%= link_to "Louer votre espace",  new_space_path, class: "nav-link" %>
+      </li>
+
+      <li class="nav-item active">
+        <%= link_to "Accueil", root_path, class: "nav-link" %>
+      </li>
+
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Louer votre espace",  new_space_path, class: "nav-link" %>
+          <%= link_to "Dashboard", reservations_path, class: "nav-link" %>
         </li>
-        <li class="nav-item active">
-          <%= link_to "Home", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to "My reservations", reservations_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to "Dashboard", users_dashboard_path, class: "nav-link" %>
-        </li>
+
+          <li class="nav-item dropdown">
+            <div class="nav-link dropdown-toggle active" data-toggle="dropdown">Hôte</div>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <%= link_to "Mes espaces de CoWorking", users_dashboard_path, class: "dropdown-item" %>
+              <%= link_to "Mes demandes de réservations", reservations_mes_demandes_path, class: "dropdown-item" %>
+            </div>
+          </li>
+
         <li class="nav-item">
           <%= link_to "Messages", "#", class: "nav-link" %>
         </li>
+
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -34,11 +61,14 @@
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
+
+    <% else %>
+      <li class="nav-item">
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      </li>
+    <% end %>
+
     </ul>
+
   </div>
 </div>

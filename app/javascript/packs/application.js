@@ -16,3 +16,4 @@ toggle();
 initMapbox();
 initAutocomplete();
 initStarRating();
+

@@ -37,7 +37,6 @@ space_1.availabilities.split(", ").each do |date|
     @new_capacity = CapacityPerDay.new(date: date, seats_available: space_1.capacity)
     @new_capacity.space = space_1
     @new_capacity.save
-  end
 end
 
   review = Review.new(
@@ -84,7 +83,6 @@ space_2.availabilities.split(", ").each do |date|
     @new_capacity.space = space_2
     @new_capacity.save
   end
-end
 
   review = Review.new(
     stars: 5,
@@ -130,7 +128,6 @@ space_3.availabilities.split(", ").each do |date|
     @new_capacity.space = space_3
     @new_capacity.save
   end
-end
 
 # Space 4
 space_4 = Space.new(
@@ -158,7 +155,6 @@ space_4.availabilities.split(", ").each do |date|
     @new_capacity.space = space_4
     @new_capacity.save
   end
-end
 
 # Space 5
 space_5 = Space.new(
@@ -186,7 +182,6 @@ space_5.availabilities.split(", ").each do |date|
     @new_capacity.space = space_5
     @new_capacity.save
   end
-end
 
 # Space 6
 space_6 = Space.new(
@@ -214,7 +209,6 @@ space_6.availabilities.split(", ").each do |date|
     @new_capacity.space = space_6
     @new_capacity.save
   end
-end
 
 # Space 7
 space_7 = Space.new(
@@ -242,7 +236,6 @@ space_7.availabilities.split(", ").each do |date|
     @new_capacity.space = space_7
     @new_capacity.save
   end
-end
 
 # Space 8
 space_8 = Space.new(
@@ -270,7 +263,6 @@ space_8.availabilities.split(", ").each do |date|
     @new_capacity.space = space_8
     @new_capacity.save
   end
-end
 
 # Space 9
 space_9 = Space.new(
@@ -298,7 +290,6 @@ space_9.availabilities.split(", ").each do |date|
     @new_capacity.space = space_9
     @new_capacity.save
   end
-end
 
 # Space 10
 space_10 = Space.new(
@@ -326,7 +317,6 @@ space_10.availabilities.split(", ").each do |date|
     @new_capacity.space = space_10
     @new_capacity.save
   end
-end
 
 # Space 11
 space_11 = Space.new(
@@ -354,7 +344,6 @@ space_11.availabilities.split(", ").each do |date|
     @new_capacity.space = space_11
     @new_capacity.save
   end
-end
 
 # Space 12
 space_12 = Space.new(
@@ -382,7 +371,7 @@ space_12.availabilities.split(", ").each do |date|
     @new_capacity.space = space_12
     @new_capacity.save
   end
-end
+
 
 reservation_one = Reservation.new(
 period: "2019-05-30",

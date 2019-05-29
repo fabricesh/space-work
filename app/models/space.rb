@@ -8,4 +8,12 @@ class Space < ApplicationRecord
   # validates :title, :localisation, :availabilities, :price, :space_type, :capacity, presence: true
   # GARDER cette ligne validates sinon formulaire en 3 etapes ne marchera pas
   validates :localisation, :space_type, :capacity, presence: true
+
+  def count_stars
+    count = 0
+    reviews.each do |review|
+      count += review.stars unless review.stars.nil?
+    end
+    return count
+  end
 end

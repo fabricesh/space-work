@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   post "spaces/:id/", to: "reservations#preview"
   post "reservation/:id/", to: "reservations#create"
   # get "spaces/:id/reviews", to: "reviews#new"
+  get    "spaces/:id/",      to: "spaces#show"
   resources :spaces do
     resources :reservations, only: :create
   end
@@ -32,6 +33,5 @@ Rails.application.routes.draw do
   # get "reservation/:id/", to: "reservations#new", as: "new_reservation"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get    "spaces/:id",      to: "spaces#show"
 
 end

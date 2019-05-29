@@ -18,7 +18,6 @@ class ReservationsController < ApplicationController
     @reservation.space = @space
     if @reservation.save
       redirect_to space_path(@space)
-      raise
     else
       raise
     end

@@ -17,7 +17,5 @@ class UsersController < ApplicationController
 
   def online
     @space = Space.find(params[:id])
-
-
   end
 end

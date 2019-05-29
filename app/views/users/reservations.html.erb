@@ -1,0 +1,28 @@
+<div class="container">
+<div class="my_coworking">
+  <h1> Vos résevations</h1>
+
+  <% @reservations.each do |reservation| %>
+    <div class="card-dash" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1))">
+
+      <div class="card-photo-dash" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path reservation.space.photo, height: 300, width: 400, crop: :fill %>')">
+        <p class="card-title"><%= reservation.space.title %></p>
+      </div>
+
+      <div class="card-product-infos">
+        <div class="content">
+          <h2><%= reservation.space.title %></h2>
+          <p><%= reservation.space.localisation %></p>
+          <p><%= "Capacité : #{reservation.space.capacity}" %></p>
+          <p><%= "Prix total : #{reservation.total_price} €" %></p>
+          <p><%= "Période : #{reservation.period}" %></p>
+        </div>
+      </div>
+
+      <div class="card-modif2">
+        <a><%= link_to "Annuler", dashboard_path, class: "btn btn-outline-danger rounded p-2"%></a>
+      </div>
+    </div>
+  <%end%>
+  </div>
+</div>

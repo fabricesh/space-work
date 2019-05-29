@@ -5,6 +5,11 @@ class UsersController < ApplicationController
     skip_authorization
   end
 
+  def reservations
+    @reservations = current_user.reservations
+    skip_authorization
+  end
+
   def destroy
     @space = Space.find(params[:id])
     @space.destroy

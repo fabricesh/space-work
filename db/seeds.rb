@@ -1,6 +1,7 @@
-User.destroy_all
+Review.destroy_all
 Reservation.destroy_all
 Space.destroy_all
+User.destroy_all
 
 puts 'Creating User...'
 user = User.new(
@@ -23,7 +24,7 @@ space_1 = Space.new(
   localisation: "16 Villa Gaudelet, Paris",
   availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  price: "98€",
+  price: 98,
   space_type: "Partagé",
   capacity: "10 personnes",
   user_id: user.id
@@ -61,7 +62,7 @@ space_2 = Space.new(
   localisation: "16 Rue du Mail, Paris",
   availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  price: "140€",
+  price: 140,
   space_type: "Partagé",
   capacity: "10 personnes",
   user_id: user.id
@@ -83,7 +84,7 @@ space_3 = Space.new(
   localisation: "39 Rue du Caire, Paris",
   availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  price: "150€",
+  price: 150,
   space_type: "Partagé",
   capacity: "10 personnes",
   user_id: user.id
@@ -112,7 +113,7 @@ space_4 = Space.new(
   localisation: "7 Rue Notre Dame de Bonne Nouvelle, Paris",
   availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  price: "50€",
+  price: 50,
   space_type: "Partagé",
   capacity: "10 personnes",
   user_id: user.id
@@ -133,7 +134,7 @@ space_5 = Space.new(
   localisation: "79 Rue Quincampoix, Paris",
   availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  price: "80€",
+  price: 80,
   space_type: "Partagé",
   capacity: "10 personnes",
   user_id: user.id
@@ -154,7 +155,7 @@ space_6 = Space.new(
   localisation: "24 Rue Béranger, Paris",
   availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  price: "40€",
+  price: 40,
   space_type: "Partagé",
   capacity: "10 personnes",
   user_id: user.id
@@ -175,7 +176,7 @@ space_7 = Space.new(
   localisation: " 8 Rue Saint-Martin, Paris",
   availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  price: "80€",
+  price: 80,
   space_type: "Partagé",
   capacity: "10 personnes",
   user_id: user.id
@@ -196,7 +197,7 @@ space_8 = Space.new(
   localisation: " 2 Rue Saint-Médard, Paris",
   availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  price: "90€",
+  price: 90,
   space_type: "Partagé",
   capacity: "10 personnes",
   user_id: user.id
@@ -217,7 +218,7 @@ space_9 = Space.new(
   localisation: " 41 Rue de la Chaussée d'Antin, Paris",
   availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  price: "90€",
+  price: 90,
   space_type: "Partagé",
   capacity: "10 personnes",
   user_id: user.id
@@ -238,7 +239,7 @@ space_10 = Space.new(
   localisation: "89 Rue du Faubourg Saint-Antoine, Paris",
   availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  price: "80€",
+  price: 80,
   space_type: "Partagé",
   capacity: "10 personnes",
   user_id: user.id
@@ -259,7 +260,7 @@ space_11 = Space.new(
   localisation: "Paris, 5ème",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
-  price: "90€",
+  price: 90,
   space_type: "Partagé",
   capacity: "10 personnes",
   user_id: user.id
@@ -280,7 +281,7 @@ space_12 = Space.new(
   localisation: "20 Rue Jean et Marie Moinon, Paris",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
-  price: "90€",
+  price: 90,
   space_type: "Partagé",
   capacity: "10 personnes",
   user_id: user.id

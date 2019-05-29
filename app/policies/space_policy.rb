@@ -1,7 +1,7 @@
 class SpacePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where(online: true)
+      scope.all
     end
   end
 

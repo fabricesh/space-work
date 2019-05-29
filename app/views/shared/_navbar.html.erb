@@ -3,6 +3,23 @@
     <%= image_tag "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558730642/logo2_byzmr8.png" %>
     <% end %>
 
+    <% unless params[:controller] == "pages" && params[:action] == "home" %>
+      <!-- button search -->
+      <div class=" search-container">
+        <%= form_tag spaces_path, class: "search-navbar", method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Recherchez par ville ou par nom..."
+          %>
+          <%= button_tag(type: "submit", class: "search-button") do %>
+              <i class="fas fa-search"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+    <% end %>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

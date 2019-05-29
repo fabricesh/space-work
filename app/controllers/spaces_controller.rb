@@ -1,8 +1,13 @@
 class SpacesController < ApplicationController
   def index
     # @spaces = Space.all
-    @spaces = policy_scope(Space)
-    @reservations = policy_scope(Reservation)
+    # Search with Algolia
+    if params[:query].present?
+      @spaces = policy_scope(Space).search(params[:query])
+    else
+      @spaces = policy_scope(Space)
+    end
+    skip_authorization
   end
 
   def show
@@ -10,6 +15,7 @@ class SpacesController < ApplicationController
     @reservation = Reservation.new
     @marker = [{ lat: @space.latitude, lng: @space.longitude }]
     skip_authorization
+    @dates = @space.availabilities.split(", ").map { |date| date.gsub("/", "-") }
   end
 
   def create_reservation
@@ -28,6 +34,7 @@ class SpacesController < ApplicationController
   def edit
     @space = Space.find(params[:id])
     authorize @space
+    @dates = @space.availabilities.split(", ").map { |date| date.gsub("/", "-") }
   end
 
   def update
@@ -122,10 +129,17 @@ class SpacesController < ApplicationController
 
   # saving availabilities and price update index
   def update_parameters
+    skip_authorization
     @space = Space.find(params[:id])
-    authorize @space
     @space.update(space_params)
     if @space.save
+      #edit appelle cette fonction. Faire en sorte de mettre un if pur update la CapacityPerDate et pas ajouter toutes les nouvelles dates de son form quand son edit le permettra
+      available_dates = @space.availabilities.split(", ")
+      available_dates.each do |date|
+        @new_capacity = CapacityPerDay.new(date: date, seats_available: @space.capacity)
+        @new_capacity.space = @space
+        @new_capacity.save!
+      end
       redirect_to dashboard_path
       flash[:notice] = "Votre Space-Work est à jour !"
     else

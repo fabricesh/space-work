@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   patch "spaces/:id/parameters", to: "spaces#update_description"
   get "spaces/:id/parameters", to: "spaces#parameters", as: "add_parameters"
   patch "spaces/:id/", to: "spaces#update_parameters"
-
   get "spaces/:id/setonline", to: "spaces#online", as: "online"
   get "spaces/:id/setoffline", to: "spaces#offline", as: "offline"
 
@@ -18,10 +17,14 @@ Rails.application.routes.draw do
   resources :users
   get "/dashboard", to: "users#dashboard"
   get "/reservations", to: "users#reservations"
+  get "/reservations/mes_demandes", to: "reservations#mes_demandes"
+  #resources :reservations, only: [:destroy]
 
   root to: 'pages#home'
   post "spaces/:id/", to: "reservations#preview"
   post "reservation/:id/", to: "reservations#create"
+  get "spaces/:id/updatedate", to: "spaces#update_date_calendar", as:"update_dates"
+
   # get "spaces/:id/reviews", to: "reviews#new"
   resources :spaces do
     resources :reservations, only: :create

@@ -15,10 +15,10 @@
       <p><strong>Type d'espace:</strong>
          <%= @space.space_type %></p>
       <p> <strong>Places disponibles:</strong>
-          <%= @space.capacity %></p>
+          <%= @space.capacity %> collaborateur<%="s" if @space.capacity > 1%></p>
     </div>
   </div>
-  <div class="d-flex justify-content-between mt-1 card-info">
+  <div class="d-flex justify-content-between mt-1 card-info mb-3">
     <div class="map-container" style="flex: 0 0 62%";>
       <div
         id="map"
@@ -26,20 +26,17 @@
         data-markers="<%= @marker.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
-      <div class="d-flex justify-content-around mt-1">
+      <div class="d-flex justify-content-left mt-1">
         <div>
-          <%= link_to "Contacter cet Espace", new_space_path, class: "btn btn-primary btn-lg" %>
-        </div>
-        <div>
-          <%= link_to "Retourner aux espaces", spaces_path, class: "btn btn-primary btn-lg" %>
+          <%= link_to "Retour", new_space_path, class: "btn btn-light btn-lg" %>
         </div>
       </div>
     </div>
     <div class="reservation-option" style="flex: 0 0 38%">
       <h2>Options de réservation</h2>
       <%= simple_form_for [@space, @reservation], :url => {:controller => "reservations", :action => "preview"}  do |f| %>
+        <%= f.input :number_worker, label: "Nombre de collaborateurs", collection: @number_worker.map.with_index {|x, i| [x, (i + 1).to_i] }, include_blank: false  %>
         <%= f.input :period, label: "Dates", placeholder: "Sélectionnez des dates", as: :string, input_html: { id: "datepicker" } %>
-        <%= f.input :number_worker, label: "Nombre de places" %>
         <input type="hidden" value="<%= @space.id %>" name="space_id">
         <%= f.button :submit, "Continuer", class: "btn-primary" %>
       <% end %>
@@ -47,12 +44,26 @@
   </div>
 </div>
 <script>
-window.onload = function(){flatpickr("#datepicker", {
+window.onload = function(){
+  flatpickr("#datepicker", {
   altInput: true,
     altFormat: "F j, Y",
     dateFormat: "Y-m-d",
-  mode: "multiple",
+    mode: "multiple",
+    inline: true,
     dateFormat: "Y-m-d",
     enable: <%=raw @dates%>,
-})};
+  });
+  document.getElementById("reservation_number_worker").addEventListener('change', (event) => {
+  let number_worker = event.currentTarget.value;
+  console.log(number_worker);
+  //lire 1,2,3...(currenttarget);
+  $.ajax({
+    url: '/spaces/'+<%= @space.id.to_s %>+'/updatedate',
+    type: 'GET',
+    data: {number_worker: number_worker}
+    //data: number_of collaborateurs
+  });
+});
+};
 </script>

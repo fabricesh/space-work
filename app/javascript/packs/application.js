@@ -9,6 +9,8 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 import "jquery-bar-rating/dist/themes/css-stars.css";
 import { initStarRating } from '../plugins/init_star_rating';
 import { toggle } from '../plugins/toggle';
+import $ from 'jquery';
+window.$ = $;
 toggle();
 
 initMapbox();

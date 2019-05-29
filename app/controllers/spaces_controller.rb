@@ -15,7 +15,30 @@ class SpacesController < ApplicationController
     @reservation = Reservation.new
     @marker = [{ lat: @space.latitude, lng: @space.longitude }]
     skip_authorization
-    @dates = @space.availabilities.split(", ").map { |date| date.gsub("/", "-") }
+    @number_worker = ["1 collaborateur"]
+    (@space.capacity - 1).times do |i|
+      @number_worker << "#{i + 1} collaborateurs"
+    end
+    @number_worker.delete_at(1)
+    #@dates = @space.availabilities.split(", ").map { |date| date.gsub("/", "-") }
+    capacity_instances = CapacityPerDay.where(space_id: @space.id)
+    @dates = []
+    capacity_instances.each do |capacity|
+      @dates << capacity.date unless capacity.seats_available.zero?
+    end
+  end
+
+  def update_date_calendar
+    skip_authorization
+    @space = params[:id].to_i
+    capacity_instances = CapacityPerDay.where(space_id: params[:id].to_i)
+    @dates = []
+    capacity_instances.each do |capacity|
+      @dates << capacity.date if capacity.seats_available >= params[:number_worker].to_i
+    end
+    respond_to do |format|
+      format.js { render :action => "update_date_calendar" }
+    end
   end
 
   def create_reservation
@@ -49,14 +72,15 @@ class SpacesController < ApplicationController
   end
 
   def destroy
-    @space = Space.find(params[:id])
-    @space.destroy
+   @space = Space.find(params[:id])
+   @space.destroy
     authorize @space
+      respond_to do |format|
+        format.html { redirect_to dashboard_path }
+        format.js
+      end
     flash[:notice] = "Votre Space-Work à été supprimé"
-    redirect_to dashboard_path
-  end
 
-  def offline
   end
 
   #creation of a new space with capacity, space_type and localisation
@@ -64,11 +88,10 @@ class SpacesController < ApplicationController
     @space = Space.new
     @space_types = ["Local entier", "Espace privé", "Espace partagé"]
     @workers_number = ["pour 1 collaborateur"]
-    20.times do |i|
+    19.times do |i|
       @workers_number << "pour #{i + 1} collaborateurs"
     end
     @workers_number.delete_at(1)
-    @workers_number.delete_at(2)
     authorize @space
   end
 
@@ -130,11 +153,17 @@ class SpacesController < ApplicationController
   def update_parameters
     skip_authorization
     @space = Space.find(params[:id])
+    current_dates = @space.availabilities.split(", ") unless @space.availabilities.nil?
     @space.update(space_params)
     if @space.save
       #edit appelle cette fonction. Faire en sorte de mettre un if pur update la CapacityPerDate et pas ajouter toutes les nouvelles dates de son form quand son edit le permettra
-      available_dates = @space.availabilities.split(", ")
-      available_dates.each do |date|
+      new_dates = @space.availabilities.split(", ")
+      dates_to_remove = current_dates - new_dates unless @space.availabilities.nil?
+      @space.availabilities.nil? ? dates_to_add = new_dates : dates_to_add = new_dates - current_dates
+      dates_to_remove.each do |date|
+        CapacityPerDay.where(date: date).destroy_all
+      end
+      dates_to_add.each do |date|
         @new_capacity = CapacityPerDay.new(date: date, seats_available: @space.capacity)
         @new_capacity.space = @space
         @new_capacity.save!
@@ -165,7 +194,10 @@ class SpacesController < ApplicationController
     authorize @space
     @space.online = true
     @space.save
-    redirect_to dashboard_path
+      respond_to do |format|
+        format.html { redirect_to dashboard_path }
+        format.js
+      end
   end
 
   def offline
@@ -173,7 +205,10 @@ class SpacesController < ApplicationController
     authorize @space
     @space.online = false
     @space.save
-    redirect_to dashboard_path
+    respond_to do |format|
+      format.html { redirect_to dashboard_path }
+      format.js
+    end
   end
 
   private

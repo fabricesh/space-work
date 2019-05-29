@@ -1,8 +1,13 @@
 class SpacesController < ApplicationController
   def index
-    @spaces = policy_scope(Space)
     # @spaces = Space.all
-    @reservations = policy_scope(Reservation)
+    # Search with Algolia
+    if params[:query].present?
+      @spaces = policy_scope(Space).search(params[:query])
+    else
+      @spaces = policy_scope(Space)
+    end
+    skip_authorization
   end
 
   def show

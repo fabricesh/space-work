@@ -12,8 +12,8 @@
   <body>
     <% exceptions = ["new", "photos", "description", "title", "parameters"] %>
     <% unless params[:controller] == "spaces" && exceptions.include?(params[:action]) %>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
 
     <% end %>
 

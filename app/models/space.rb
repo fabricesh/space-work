@@ -20,10 +20,29 @@ class Space < ApplicationRecord
       array = self.reviews.map do |review|
         review.stars
       end
-      return array.sum.fdiv(array.length)
+      x  = array.sum.fdiv(array.length)
+      rouded_rating = (x * 2.0).round / 2.0
     else
-      return ""
+      return 0
     end
+  end
+
+  def number_of_empty_star
+    5 - average_stars.round(half: :up)
+  end
+
+  def number_of_half_star
+    # binding.pry
+    if average_stars % 1 == 0.5
+     1
+    else
+     0
+    end
+
+  end
+
+  def number_of_full_star
+    average_stars.truncate
   end
 end
 

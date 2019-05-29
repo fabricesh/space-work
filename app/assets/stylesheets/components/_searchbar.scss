@@ -1,5 +1,7 @@
 .search-navbar {
   border-radius: 50%;
+  width: 351px;
+  position: relative;
 }
 /*#query {
   border-radius: 5px;
@@ -9,8 +11,8 @@
 .search-container {
   width: 25rem;
   height: 100%;
-  margin: 0 1rem;
-  position: relative;
+  margin: 0;
+
   box-sizing: border-box;
   font-family: 'Sarabun', sans-serif;
   input {

@@ -1,6 +1,6 @@
 <div class="container">
 <div class="my_coworking">
-  <h1> Vos résevations</h1>
+  <h1> Mes demandes de réservations</h1>
 
   <% @reservations.each do |reservation| %>
     <div class="card-dash" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1))">
@@ -20,10 +20,8 @@
       </div>
 
       <div class="card-modif2">
-        <a><%= link_to "Annuler", "", class: "btn btn-outline-danger rounded p-2"
-        %></a>
-
-        <a><%= link_to "Commenter", new_space_review_path(reservation.space), class: "btn btn-outline-primary rounded p-2"%></a>
+        <a class="btn btn-outline-warning rounded p-2"><%= "Annuler" %></a>
+        <a class="btn btn-outline-success rounded p-2"><%= "Attente confirmation" %></a>
       </div>
     </div>
   <%end%>

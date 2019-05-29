@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :users
   get "/dashboard", to: "users#dashboard"
+  get "/reservations", to: "users#reservations"
 
   root to: 'pages#home'
   post "spaces/:id/", to: "reservations#preview"

@@ -27,6 +27,15 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+.btn-white a:hover{
+  color:white;
+}
+.card-modif2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 
 .card-center {
   height: 50px;
@@ -55,13 +64,50 @@
     justify-content: space-between;;
 }
 
+.dash-online{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-left: 55px;
+}
+
 .card-product-infos {
-    width: 300px;
+    width: 550px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
+.card-modif {
+     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-modif-btn {
+  width: 20px;
+  height: 10px;
+  border-radius: 5px;
+}
+
+.content p
+{
+margin: 0px;
+
+}
+
+.online {
+  width: 150px;
+  padding: 10px;
+  margin-left: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .reservation-option {
   border: 1px solid rbga(0,0,0,0.1);

@@ -7,8 +7,6 @@
        <h1 class="p-3"> Vos espaces de Co-Working</h1>
     <% end %>
 
-
-
       <% @spaces.each do |space| %>
         <div class="card-dash" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1))">
           <!-- Co-working image -->
@@ -20,7 +18,7 @@
           <!-- Co-working specifications -->
           <div class="card-product-infos">
             <div class="content">
-              <p><%=space.title %></p>
+              <h3><%=space.title %></h3>
               <p><%= space.localisation %></p>
               <p><%= "Capacité : #{space.capacity}" %></p>
               <p><%= "Prix mensuel : #{space.price} €" %></p>
@@ -32,60 +30,25 @@
           </div>
           <!-- Flex box 2-->
             <!-- Co-corking actions (delete/modify) -->
-          <div class = "w-50 py-5">
-            <p><%= link_to "Modifier", edit_space_path(space) %></p>
-            <p><%= link_to "Supprimer", space_path(space),
+          <div class = "card-modif">
+            <a><%= link_to "Modifier", edit_space_path(space), class: "btn btn-outline-primary rounded p-2" %></a>
+            <a><%= link_to "Supprimer", space_path(space),class: "btn btn-outline-danger rounded p-2",
               method: :delete,
-              data: {confirm: "are you sure?"} %></p>
-          </div>
+              data: {confirm: "are you sure?"} %></a>
 
             <!-- Published / unpublished -->
-          <div>
-            <p>Statut</p>
             <% if space.online %>
-              <%= link_to "Online", offline_path(space), class: "btn btn-outline-primary rounded p-2"  %>
-              <p>Set Offline</p>
+              <a><%= link_to "Online", offline_path(space), class: "btn btn-outline-success rounded p-2"  %></a>
+              <p>Set Offline</>
             <% else %>
-              <%= link_to "Offline", online_path(space), class: "btn btn-outline-danger rounded p-2"  %>
-              <p>Set Online</p>
+              <a><%= link_to "Offline", online_path(space), class: "btn btn-outline-warning rounded p-2"  %><a>
+              <p class="notification-actions"><i>Set Online<i></p>
             <% end %>
           </div>
-
         </div>
       <% end %>
-
-  </div>
-
-  <div class="my_reservation">
-    <h1> Vos résevations</h1>
-    <% @reservations.each do |reservation| %>
-
-      <div class="cards">
-
-        <div class="card-product" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1))">
-
-        <!-- Co-working image -->
-          <div class="card-photo-index" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path reservation.space.photo, height: 300, width: 400, crop: :fill %>')">
-            <p class="card-title"><%= reservation.space.title %></p>
-          </div>
-
-          <div class="d-flex justify-content-between w-100 h-100 d-inline-block">
-
-          <div class="card-product-infos notification-content py-0">
-            <h2><%= reservation.space.title %></h2>
-            <p><%= reservation.space.localisation %></p>
-            <p><%= "Capacité : #{reservation.space.capacity}" %></p>
-            <p><strong><%= "Prix total : #{reservation.total_price} €" %></strong></p>
-              <p><strong><%= "Période : #{reservation.period}" %></strong></p>
-          </div>
-
-            <!-- Flex box 2-->
-            <!-- Co-corking actions (delete/modify) -->
-          <div class = "notification-actions mx-5">
-            <p><%= "ANNULER" %></p>
-          </div>
-      </div>
-    <%end%>
     </div>
   </div>
+
+
 </div>

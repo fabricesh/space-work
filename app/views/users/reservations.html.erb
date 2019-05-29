@@ -15,7 +15,7 @@
           <p><%= reservation.space.localisation %></p>
           <p><%= "Capacité : #{reservation.space.capacity}" %></p>
           <p><%= "Prix total : #{reservation.total_price} €" %></p>
-          <p><%= "Période : #{reservation.period}" %></p>
+          <p><%= "Période : #{reservation.period.split(", ").size}" %></p>
         </div>
       </div>
 

@@ -1,0 +1,130 @@
+.card-dash {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  display: flex;
+  width:1000px;
+  text-align: space-between;
+
+  height: 200px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  //align-items: center;
+}
+.card-photo-dash {
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.btn-white a:hover{
+  color:white;
+}
+.card-modif2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.card-center {
+  height: 50px;
+  width: 350px;
+  display:flex;
+  justify-content: center;
+}
+
+.card-product img {
+  height: 160px;
+  width: 160px;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product p {
+ width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;;
+}
+
+.dash-online{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-left: 55px;
+}
+
+.card-product-infos {
+    width: 550px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-modif {
+     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-modif-btn {
+  width: 20px;
+  height: 10px;
+  border-radius: 5px;
+}
+
+.content p
+{
+margin: 0px;
+
+}
+
+.online {
+  width: 150px;
+  padding: 10px;
+  margin-left: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.reservation-option {
+  border: 1px solid rbga(0,0,0,0.1);
+  padding: 10px;
+  margin-bottom: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-info {
+  margin: 9px 0;
+}
+
+.card-edit {
+  align-items: center;
+  vertical-align: bottom;
+}
+
+.information-card {
+  margin-top: 22px;
+}

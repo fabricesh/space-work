@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_163349) do
     t.text "description"
     t.float "latitude"
     t.float "longitude"
+    t.boolean "online"
     t.index ["user_id"], name: "index_spaces_on_user_id"
   end
 

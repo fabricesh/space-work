@@ -6,6 +6,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Space.destroy_all
+Reservation.destroy_all
+User.destroy_all
 
 puts 'Creating User...'
 user = User.new(
@@ -14,11 +17,9 @@ user = User.new(
   )
 user.save
 
-
 puts 'Creating fake spaces...'
 
-
-space = Space.new(
+space_one = Space.new(
   title: "Le Wagon",
   localisation: "16 Villa Gaudelet, Paris",
   availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
@@ -28,8 +29,8 @@ space = Space.new(
   capacity: "10 personnes",
   user_id: user.id
   )
-space.remote_photo_url = "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558633729/wagon.001_xyypeg.png"
-space.save
+space_one.remote_photo_url = "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558633729/wagon.001_xyypeg.png"
+space_one.save
 
 
 space = Space.new(
@@ -43,6 +44,7 @@ space = Space.new(
   user_id: user.id
   )
 space.remote_photo_url = "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558706129/workspace4_grsz6e.jpg"
+
 space.save
 
 space = Space.new(
@@ -175,6 +177,30 @@ space = Space.new(
   )
 space.remote_photo_url = "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558707451/Wework3_qcwpzx.jpg"
 space.save
+
+reservation_one = Reservation.new(
+period: "Juin",
+total_price: 20,
+user_id: user.id
+)
+reservation_one.space = space_one
+reservation_one.save
+
+reservation_two = Reservation.new(
+period: "Juillet",
+total_price: 200,
+user_id: user.id
+)
+reservation_two.space = space_one
+reservation_two.save
+
+reservation_three = Reservation.new(
+period: "JanVIER",
+total_price: 2000,
+user_id: user.id
+)
+reservation_three.space = space_one
+reservation_three.save
 puts 'Finished'
 
 

@@ -1,45 +1,54 @@
 <div class="container">
-  <% if @spaces.empty? %>
-     <p class="btn btnprimary">Add a Working Space</p>
-  <%else %>
-     <h1> Vos espaces de Co-Working</h1>
-     <% @spaces.each do |space| %>
-       <div class="card-product" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1))">
-        <!-- Co-working image -->
-        <div class="card-photo-index" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path space.photo, height: 300, width: 400, crop: :fill %>')">
-          <p class="card-title"><%= space.title %></p>
-        </div>
-        <!-- Flex-box1 -->
-        <!-- Co-working specifications -->
-        <div class="d-flex justify-content-between w-100 h-100 d-inline-block">
-          <div class="card-product-infos notification-content py-0">
-            <h2><%=space.title %></h2>
-            <p><%= space.localisation %></p>
-            <p><%= "Capacité : #{space.capacity}" %></p>
-            <p><%= "Prix mensuel : #{space.price} €" %></p>
-            <%= link_to "Voir mon annonce", space_path(space) %>
+
+  <div class="my_coworking"></div>
+    <% if @spaces.empty? %>
+       <p class="btn btn-primary">Add a Working Space</p>
+    <%else %>
+       <h1 class="p-3"> Vos espaces de Co-Working</h1>
+    <% end %>
+
+      <% @spaces.each do |space| %>
+        <div class="card-dash" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1))">
+          <!-- Co-working image -->
+          <div class="card-photo-dash" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%=   cl_image_path space.photo%>')">
+           <p class="card-title"><%= space.title %></p>
+          </div>
+
+         <!-- Flex-box1 -->
+          <!-- Co-working specifications -->
+          <div class="card-product-infos">
+            <div class="content">
+              <h3><%=space.title %></h3>
+              <p><%= space.localisation %></p>
+              <p><%= "Capacité : #{space.capacity}" %></p>
+              <p><%= "Prix mensuel : #{space.price} €" %></p>
+            </div>
+
+            <div>
+              <%= link_to "Voir mon annonce", space_path(space)  %>
+            </div>
           </div>
           <!-- Flex box 2-->
-          <div class="d-flex">
             <!-- Co-corking actions (delete/modify) -->
-            <div class = "notification-actions mx-5">
-              <p><%= link_to "Modifier", edit_space_path(space) %></p>
-              <p><%= link_to "Supprimer", space_path(space),
-                method: :delete,
-                data: {confirm: "are you sure?"} %></p>
-            </div>
+          <div class = "card-modif">
+            <a><%= link_to "Modifier", edit_space_path(space), class: "btn btn-outline-primary rounded p-2" %></a>
+            <a><%= link_to "Supprimer", space_path(space),class: "btn btn-outline-danger rounded p-2",
+              method: :delete,
+              data: {confirm: "are you sure?"} %></a>
+
             <!-- Published / unpublished -->
-            <span>
-              <div class="btn-group btn-group-toggle mr-5" data-toggle="buttons">
-                <label class="btn btn-primary active">
-                <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled">
-                <input type="checkbox" id="toggle-two">
-                </label>
-              </div>
-            </span>
+            <% if space.online %>
+              <a><%= link_to "Online", offline_path(space), class: "btn btn-outline-success rounded p-2"  %></a>
+              <p>Set Offline</>
+            <% else %>
+              <a><%= link_to "Offline", online_path(space), class: "btn btn-outline-warning rounded p-2"  %><a>
+              <p class="notification-actions"><i>Set Online<i></p>
+            <% end %>
           </div>
         </div>
-      </div>
-    <%end%>
-  <% end %>
+      <% end %>
+    </div>
+  </div>
+
+
 </div>

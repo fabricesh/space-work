@@ -6,8 +6,11 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 import { initMapbox } from '../plugins/init_mapbox';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import { initAutocomplete } from '../plugins/init_autocomplete';
-
-
+import "jquery-bar-rating/dist/themes/css-stars.css";
+import { initStarRating } from '../plugins/init_star_rating';
+import { toggle } from '../plugins/toggle';
+toggle();
 
 initMapbox();
 initAutocomplete();
+initStarRating();

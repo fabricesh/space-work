@@ -94,7 +94,7 @@
                 </td>
 
                 <td>
-                    5
+                    <%= @reservation.period.split(", ").size %>
                 </td>
             </tr>
 
@@ -117,7 +117,7 @@
             </tr>
         </table>
         <div class="d-flex justify-content-between mt-3">
-          <%= link_to "Retour", spaces_path, class: "btn btn-primary btn-lg" %>
+          <%= link_to "Retour", spaces_path, class: "btn btn-light btn-lg" %>
           <%= simple_form_for @reservation, :url => {:action => "create"}  do |f| %>
             <%= f.hidden_field :period, value: params[:period] %>
             <%= f.hidden_field :number_worker, value: params[:number_worker] %>

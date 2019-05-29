@@ -1,11 +1,6 @@
-
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Space.destroy_all
+Reservation.destroy_all
+User.destroy_all
 
 puts 'Creating User...'
 user = User.new(
@@ -26,7 +21,8 @@ puts 'Creating fake spaces...'
 space_1 = Space.new(
   title: "Le Wagon",
   localisation: "16 Villa Gaudelet, Paris",
-  availabilities: "Disponible dès maintenant",
+  availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   price: "98€",
   space_type: "Partagé",
   capacity: "10 personnes",
@@ -63,7 +59,8 @@ space_1.save
 space_2 = Space.new(
   title: "Welcome to the jungle",
   localisation: "16 Rue du Mail, Paris",
-  availabilities: "Disponible dès maintenant",
+  availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   price: "140€",
   space_type: "Partagé",
   capacity: "10 personnes",
@@ -80,12 +77,12 @@ space_2.save
   review.user = user_renter
   review.save
 
-
 # Space 3
 space_3 = Space.new(
   title: "Numa",
   localisation: "39 Rue du Caire, Paris",
-  availabilities: "Disponible dès maintenant",
+  availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   price: "150€",
   space_type: "Partagé",
   capacity: "10 personnes",
@@ -113,7 +110,8 @@ space_3.save
 space_4 = Space.new(
   title: "Les 2 au coin",
   localisation: "7 Rue Notre Dame de Bonne Nouvelle, Paris",
-  availabilities: "Disponible dès maintenant",
+  availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   price: "50€",
   space_type: "Partagé",
   capacity: "10 personnes",
@@ -133,7 +131,8 @@ space_4.save
 space_5 = Space.new(
   title: "Anticafé",
   localisation: "79 Rue Quincampoix, Paris",
-  availabilities: "Disponible dès maintenant",
+  availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   price: "80€",
   space_type: "Partagé",
   capacity: "10 personnes",
@@ -153,7 +152,8 @@ space_5.save
 space_6 = Space.new(
   title: "Dojocrea",
   localisation: "24 Rue Béranger, Paris",
-  availabilities: "Disponible dès maintenant",
+  availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   price: "40€",
   space_type: "Partagé",
   capacity: "10 personnes",
@@ -173,7 +173,8 @@ space_6.save
 space_7 = Space.new(
   title: "Cosy Corner",
   localisation: " 8 Rue Saint-Martin, Paris",
-  availabilities: "Disponible dès maintenant",
+  availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   price: "80€",
   space_type: "Partagé",
   capacity: "10 personnes",
@@ -193,7 +194,8 @@ space_7.save
 space_8 = Space.new(
   title: "Labo de l’Edition",
   localisation: " 2 Rue Saint-Médard, Paris",
-  availabilities: "Disponible dès maintenant",
+  availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   price: "90€",
   space_type: "Partagé",
   capacity: "10 personnes",
@@ -213,7 +215,8 @@ space_8.save
 space_9 = Space.new(
   title: "Mozaïk",
   localisation: " 41 Rue de la Chaussée d'Antin, Paris",
-  availabilities: "Disponible dès maintenant",
+  availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   price: "90€",
   space_type: "Partagé",
   capacity: "10 personnes",
@@ -233,7 +236,8 @@ space_9.save
 space_10 = Space.new(
   title: "CoworkCrèche",
   localisation: "89 Rue du Faubourg Saint-Antoine, Paris",
-  availabilities: "Disponible dès maintenant",
+  availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   price: "80€",
   space_type: "Partagé",
   capacity: "10 personnes",
@@ -253,7 +257,8 @@ space_10.save
 space_11 = Space.new(
   title: "Lawomatic",
   localisation: "Paris, 5ème",
-  availabilities: "Disponible dès maintenant",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
   price: "90€",
   space_type: "Partagé",
   capacity: "10 personnes",
@@ -273,7 +278,8 @@ space_11.save
 space_12 = Space.new(
   title: "Coworkshop",
   localisation: "20 Rue Jean et Marie Moinon, Paris",
-  availabilities: "Disponible dès maintenant",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  availabilities: "2019-05-29, 2019-05-30, 2019-05-31, 2019-06-01, 2019-06-02, 2019-06-03, 2019-06-04, 2019-06-05, 2019-06-06, 2019-06-06, 2019-06-07",
   price: "90€",
   space_type: "Partagé",
   capacity: "10 personnes",
@@ -281,7 +287,6 @@ space_12 = Space.new(
   )
 space_12.remote_photo_url = "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558707451/Wework3_qcwpzx.jpg"
 space_12.save
-puts 'Finished'
     review = Review.new(
       stars: 4,
       content: "Au top",
@@ -289,5 +294,32 @@ puts 'Finished'
     review.space = space_12
     review.user = user_renter
     review.save
+
+reservation_one = Reservation.new(
+period: "Juin",
+total_price: 20,
+user_id: user.id
+)
+reservation_one.space = space_1
+reservation_one.save
+
+reservation_two = Reservation.new(
+period: "Juillet",
+total_price: 200,
+user_id: user.id
+)
+reservation_two.space = space_1
+reservation_two.save
+
+reservation_three = Reservation.new(
+period: "JanVIER",
+total_price: 2000,
+user_id: user.id
+)
+reservation_three.space = space_1
+reservation_three.save
+
+puts 'Finished'
+
 
 

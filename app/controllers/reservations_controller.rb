@@ -1,22 +1,26 @@
 class ReservationsController < ApplicationController
-
-  def new
+  def preview
     skip_authorization
-    @reservation = Reservation.find(params[:id])
-    @space = @reservation.space
+    @reservation = Reservation.new(reservation_params)
+    @space = Space.find(params[:space_id])
     dates = @reservation.period
     dates = dates.split("to")
     clean_dates = []
     dates.each { |date| clean_dates << date.delete(" ") }
-    @price = @reservation.number_worker * 5 * @space.price
+    @price = @reservation.number_worker * @reservation.period.split(", ").size * @space.price
   end
 
   def create
-    @reservation = Reservation.new
-    @reservation.space = Space.find(params[:space_id])
-    @reservation.save
-    redirect_to space_path(@space)
     skip_authorization
+    @reservation = Reservation.new(reservation_params)
+    @reservation.user = current_user
+    @space = Space.find(reservation_params[:space_id])
+    @reservation.space = @space
+    if @reservation.save
+      redirect_to reservations_path
+    else
+      raise
+    end
   end
 
   private

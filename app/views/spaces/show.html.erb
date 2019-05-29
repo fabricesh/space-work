@@ -1,39 +1,21 @@
-
 <!-- cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill  -->
-
 
 <div class="container">
 
-  <div class="card-product">
-
-
+  <div class="card-product d-flex">
     <div class="card-a" style="background-image: url('<%= cl_image_path @space.photo, height: 600, width: 900, crop: :fill %>')">
-
     </div>
 
-
-    <div class="card-product-infos">
-
-
+   <div class="card-product-infos" style="flex: 0 0 38%">
       <h1><%= @space.title %></h1>
-      <p><%= @space.availabilities %>
-
-      </p>
-      <p><%= @space.localisation %>
-
-      </p>
+      <p><%= @space.description %></p>
+      <p><%= @space.localisation %></p>
       <p><strong>Prix à la journée:</strong>
-          <%= "#{@space.price} €" %>
-      </p>
-
+          <%= "#{@space.price} €" %></p>
       <p><strong>Type d'espace:</strong>
-         <%= @space.space_type %>
-      </p>
-
+         <%= @space.space_type %></p>
       <p> <strong>Places disponibles:</strong>
-          <%= @space.capacity %>
-      </p>
-
+          <%= @space.capacity %></p>
     </div>
   </div>
   <div class="d-flex justify-content-between mt-1 card-info">
@@ -55,18 +37,22 @@
     </div>
     <div class="reservation-option" style="flex: 0 0 38%">
       <h2>Options de réservation</h2>
-      <%= simple_form_for [@space, @reservation], :url => {:action => "create_reservation"}  do |f| %>
+      <%= simple_form_for [@space, @reservation], :url => {:controller => "reservations", :action => "preview"}  do |f| %>
         <%= f.input :period, label: "Dates", placeholder: "Sélectionnez des dates", as: :string, input_html: { id: "datepicker" } %>
         <%= f.input :number_worker, label: "Nombre de places" %>
+        <input type="hidden" value="<%= @space.id %>" name="space_id">
         <%= f.button :submit, "Continuer", class: "btn-primary" %>
       <% end %>
     </div>
   </div>
 </div>
-
-<%#= simple_form_for [@space, @reservation] do |f| %>
-        <%#= f.input :start_day %>
-        <%#= f.input :end_day %>
-
-        <%#= f.button :submit, "Valider vos options", class: "btn-primary" %>
-
+<script>
+window.onload = function(){flatpickr("#datepicker", {
+  altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y-m-d",
+  mode: "multiple",
+    dateFormat: "Y-m-d",
+    enable: <%=raw @dates%>,
+})};
+</script>

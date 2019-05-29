@@ -13,9 +13,9 @@ class SpacesController < ApplicationController
   def show
     @space = Space.find(params[:id])
     @reservation = Reservation.new
-    # @space = Space.where.not(latitude: nil, longitude: nil)
     @marker = [{ lat: @space.latitude, lng: @space.longitude }]
     skip_authorization
+    @dates = @space.availabilities.split(", ").map { |date| date.gsub("/", "-") }
   end
 
   def create_reservation
@@ -24,15 +24,17 @@ class SpacesController < ApplicationController
     @reservation.user = current_user
     @reservation.space = Space.find(params[:id])
     if @reservation.save
-      redirect_to new_reservation_path(@reservation)
+      redirect_to dashboard_path(@reservation)
+      flash[:notice] = "Votre demande de réservation est en attente de validation !"
     else
-      raise
+      render :new
     end
   end
 
   def edit
     @space = Space.find(params[:id])
     authorize @space
+    @dates = @space.availabilities.split(", ").map { |date| date.gsub("/", "-") }
   end
 
   def update
@@ -126,15 +128,52 @@ class SpacesController < ApplicationController
 
   # saving availabilities and price update index
   def update_parameters
+    skip_authorization
     @space = Space.find(params[:id])
-    authorize @space
     @space.update(space_params)
     if @space.save
+      #edit appelle cette fonction. Faire en sorte de mettre un if pur update la CapacityPerDate et pas ajouter toutes les nouvelles dates de son form quand son edit le permettra
+      available_dates = @space.availabilities.split(", ")
+      available_dates.each do |date|
+        @new_capacity = CapacityPerDay.new(date: date, seats_available: @space.capacity)
+        @new_capacity.space = @space
+        @new_capacity.save!
+      end
       redirect_to dashboard_path
       flash[:notice] = "Votre Space-Work est à jour !"
     else
       render :parameters
     end
+  end
+
+  def availability
+    @space = Space.find(params[:id])
+    authorize @space
+    if params[:value] == true
+      @space.online = true
+    else
+      @space.online = false
+    end
+    @space.save
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def online
+    @space = Space.find(params[:id])
+    authorize @space
+    @space.online = true
+    @space.save
+    redirect_to dashboard_path
+  end
+
+  def offline
+    @space = Space.find(params[:id])
+    authorize @space
+    @space.online = false
+    @space.save
+    redirect_to dashboard_path
   end
 
   private

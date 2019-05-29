@@ -1,6 +1,6 @@
-Space.destroy_all
-Reservation.destroy_all
 User.destroy_all
+Reservation.destroy_all
+Space.destroy_all
 
 puts 'Creating User...'
 user = User.new(

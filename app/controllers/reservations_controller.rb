@@ -28,6 +28,13 @@ class ReservationsController < ApplicationController
     @reservations = current_user.reservations
   end
 
+  def destroy
+    @space = Space.find(params[:id])
+    @space.destroy
+    authorize @space
+    redirect_to dashboard_path
+    flash[:notice] = "Votre Space-Work à été supprimé"
+  end
 
   private
 

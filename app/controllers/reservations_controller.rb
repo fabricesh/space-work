@@ -7,7 +7,7 @@ class ReservationsController < ApplicationController
     dates = dates.split("to")
     clean_dates = []
     dates.each { |date| clean_dates << date.delete(" ") }
-    @price = @reservation.number_worker * 5 * @space.price
+    @price = @reservation.number_worker * @reservation.period.split(", ").size * @space.price
   end
 
   def create
@@ -17,8 +17,7 @@ class ReservationsController < ApplicationController
     @space = Space.find(reservation_params[:space_id])
     @reservation.space = @space
     if @reservation.save
-      redirect_to space_path(@space)
-      raise
+      redirect_to reservations_path
     else
       raise
     end

@@ -29,3 +29,20 @@
   </div>
 </div>
 </div>
+<script>
+window.onload = function(){flatpickr("#datepicker", {
+  altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y-m-d",
+  mode: "multiple",
+    dateFormat: "Y-m-d",
+    enable: [
+      {
+        // disable every multiple of 8
+        from: new Date().toISOString().slice(0,10),
+        to: new Date(8640000000000000).toISOString().slice(0,10)
+
+      }
+    ]
+})};
+</script>

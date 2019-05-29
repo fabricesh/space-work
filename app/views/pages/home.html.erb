@@ -23,17 +23,17 @@
 <div class="container">
   <h2 class="text-center my-3 banner-text">Travaillez où vous le souhaitez</h2>
   <div class="flex cards mt-3">
-    <%= link_to spaces_path, class: "card" do %>
+    <%= link_to spaces_path, class: "card-1" do %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/ddzudaqmd/image/upload/v1558632241/coworking_space_xn09ep.png)">
         <p class="card-title"><%= "Espaces de Co-Working" %></p>
       </div>
     <% end %>
-    <%= link_to spaces_path, class: "card" do %>
+    <%= link_to spaces_path, class: "card-1" do %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/ddzudaqmd/image/upload/v1558894249/ieyxmztlbadtf3qyn5zu.jpg)">
         <p class="card-title"><%= "Cafés" %></p>
       </div>
     <% end %>
-    <%= link_to spaces_path, class: "card" do %>
+    <%= link_to spaces_path, class: "card-1" do %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/ddzudaqmd/image/upload/v1558894247/nrzqwrjftkwuttvexga3.jpg)">
         <p class="card-title"><%= "Bureaux d'entreprises" %></p>
       </div>
@@ -42,9 +42,33 @@
   <h2 class="text-center my-3 banner-text">Nos coups de cœur à Paris</h2>
   <div class="flex cards mt-3">
   <% @spaces.each do |space| %>
-    <%= link_to space_path(space), class: "card" do %>
+    <%= link_to space_path(space), class: "card-1" do %>
+    <div class="card-container">
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path space.photo, height: 300, width: 400, crop: :fill %>')">
-        <p class="card-title"><%= space.title %></p>
+          <p class="card-title"><%= space.title %></p>
+        </div>
+        <div class="d-flex justify-content-between">
+          <p class="text-card m-1"><%= "#{space.price} € / jours" %></p>
+          <div class="stars m-1">
+            <!-- star review -->
+            <% if space.number_of_empty_star == 5 %>
+              <%= "" %>
+            <% else %>
+              <!-- full star -->
+              <% space.number_of_full_star.times do %>
+                <i class='fas fa-star'></i>
+              <% end %>
+              <!-- half star -->
+              <% space.number_of_half_star.times do %>
+                <i class='fas fa-star-half-alt'></i>
+              <% end %>
+              <!-- empty star -->
+              <% space.number_of_empty_star.times do %>
+                <i class='far fa-star'></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     <% end %>
   <% end %>

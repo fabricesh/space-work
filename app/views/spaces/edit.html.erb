@@ -28,5 +28,20 @@
         </div>
       </div>
     </div>
+    <div class="col-md-5 landing__right-col">
+      <div class="_e296pg" style="width:100%;height:auto">
+        <img class="_1u6feuz3" src="https://a0.muscache.com/airbnb/static/packages/start.b12a70f6.png" width="100%" height="auto" alt="Commencer">
+      </div>
+    </div>
   </div>
 </div>
+<script>
+window.onload = function(){flatpickr("#datepicker", {
+  altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y-m-d",
+    mode: "multiple",
+    dateFormat: "Y-m-d",
+    defaultDate: <%=raw @dates%>,
+})};
+</script>

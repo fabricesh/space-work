@@ -39,7 +39,6 @@ class SpacesController < ApplicationController
     respond_to do |format|
       format.js { render :action => "update_date_calendar" }
     end
-
   end
 
   def create_reservation
@@ -73,14 +72,15 @@ class SpacesController < ApplicationController
   end
 
   def destroy
-    @space = Space.find(params[:id])
-    @space.destroy
+   @space = Space.find(params[:id])
+   @space.destroy
     authorize @space
       respond_to do |format|
         format.html { redirect_to dashboard_path }
         format.js
       end
     flash[:notice] = "Votre Space-Work à été supprimé"
+
   end
 
   #creation of a new space with capacity, space_type and localisation

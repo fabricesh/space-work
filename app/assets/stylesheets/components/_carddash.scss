@@ -1,5 +1,4 @@
 .card-dash {
-  margin-top: 20px;
   margin-bottom: 20px;
   overflow: hidden;
   display: flex;
@@ -85,7 +84,7 @@
 .card-modif {
      display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .card-modif-btn {

@@ -27,8 +27,8 @@ space_1 = Space.new(
   price: 98,
   space_type: "Partagé",
   capacity: 10,
-  user_id: user.id
-  )
+  user_id: user.id,
+ )
 space_1.remote_photo_url = "https://res.cloudinary.com/ddzudaqmd/image/upload/v1558633729/wagon.001_xyypeg.png"
 space_1.save
 

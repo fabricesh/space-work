@@ -155,24 +155,25 @@ class SpacesController < ApplicationController
     @space = Space.find(params[:id])
     current_dates = @space.availabilities.split(", ") unless @space.availabilities.nil?
     @space.update(space_params)
-    if @space.save
-      #edit appelle cette fonction. Faire en sorte de mettre un if pur update la CapacityPerDate et pas ajouter toutes les nouvelles dates de son form quand son edit le permettra
-      new_dates = @space.availabilities.split(", ")
-      dates_to_remove = current_dates - new_dates unless @space.availabilities.nil?
-      @space.availabilities.nil? ? dates_to_add = new_dates : dates_to_add = new_dates - current_dates
-      dates_to_remove.each do |date|
-        CapacityPerDay.where(date: date).destroy_all
-      end
-      dates_to_add.each do |date|
-        @new_capacity = CapacityPerDay.new(date: date, seats_available: @space.capacity)
-        @new_capacity.space = @space
-        @new_capacity.save!
-      end
+    @space.save
+      # if space    
+      # edit appelle cette fonction. Faire en sorte de mettre un if pur update la CapacityPerDate et pas ajouter toutes les nouvelles dates de son form quand son edit le permettra
+      # new_dates = @space.availabilities.split(", ")
+      # dates_to_remove = current_dates - new_dates unless @space.availabilities.nil?
+      # @space.availabilities.nil? ? dates_to_add = new_dates : dates_to_add = new_dates - current_dates
+      # dates_to_remove.each do |date|
+      # CapacityPerDay.where(date: date).destroy_all
+
+    # dates_to_add.each do |date|
+      #@new_capacity = CapacityPerDay.new(date: date, seats_available: @space.capacity)
+      #@new_capacity.space = @space
+      #@new_capacity.save!
+    #end
       redirect_to dashboard_path
       flash[:notice] = "Votre Space-Work est à jour !"
-    else
-      render :parameters
-    end
+   # else
+    #  render :parameters
+    #end
   end
 
   def availability

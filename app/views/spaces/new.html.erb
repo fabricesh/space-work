@@ -18,6 +18,8 @@
                   <%= f.input :capacity, label: false, collection: @workers_number.map.with_index {|x, i| [x, (i + 1).to_i] }, include_blank: false %>
                   <%= f.input :localisation, label: false, placeholder: "ex : Paris",input_html: { value: 'Paris, France', id: "address-input" } %>
                   <%= f.button :submit, "Continuer", class: "btn-primary" %>
+                        <%= link_to "Retour", root_path, class: "btn btn-light" %>
+
                   <% end %>
                 </div>
               </div>

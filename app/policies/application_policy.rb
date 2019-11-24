@@ -11,15 +11,11 @@ class ApplicationPolicy
   end
 
   def show?
-    true
+    false
   end
 
   def create?
     false
-  end
-
-  def dashboard?
-    record == user
   end
 
   def new?

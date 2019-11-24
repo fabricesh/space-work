@@ -18,13 +18,13 @@
           <%= f.input :availabilities, label: "Mettez à jour votre calendrier", placeholder: "Sélectionnez des dates", as: :string, input_html: { id: "datepicker" } %>
           <%= f.input :price, label: "Prix à la journée" %>
           <%= f.button :submit, "Continuer", class: "btn-primary" %>
+      <%= link_to "Retour", root_path, class: "btn btn-light" %>
         <% end %>
     </div>
   </div>
   <div class="_to-the-bottom">
   <div class="d-flex justify-content-between _bottom-background">
     <div class="m-6">
-      <%= link_to "Retour", new_space_path, class: "btn btn-light" %>
     </div>
   </div>
 </div>

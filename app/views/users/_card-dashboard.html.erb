@@ -2,12 +2,14 @@
   <!-- Co-working image -->
   
 
-  <div class="card-photo-dash" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<=%   cl_image_path space.photo%>);">
-  <!--'<=%   cl_image_path space.photo%>')"> -->  
+ 
+    <div class="card-photo-dash" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path space.photo, height: 300, width: 400, crop: :fill %>')">
+    
     <div class ="card-title"></div>
       <p><%= space.title %></p>
     </div>
   
+
 
  <!-- Flex-box1 -->
   <!-- Co-working specifications -->

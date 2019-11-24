@@ -1,6 +1,6 @@
 <div class="container">
 <div class="my_coworking">
-  <h1> Mes demandes de réservations</h1>
+  <h1 class="p-3"> Vos résevations</h1>
 
   <% @reservations.each do |reservation| %>
     <div class="card-dash" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1))">
@@ -15,13 +15,15 @@
           <p><%= reservation.space.localisation %></p>
           <p><%= "Capacité : #{reservation.space.capacity}" %></p>
           <p><%= "Prix total : #{reservation.total_price} €" %></p>
-          <p><%= "Période : #{reservation.period}" %></p>
+          <p><%= "Période : #{reservation.period.split(", ").size}" %></p>
         </div>
       </div>
 
       <div class="card-modif2">
-        <a class="btn btn-outline-warning rounded p-2"><%= "Annuler" %></a>
-        <a class="btn btn-outline-success rounded p-2"><%= "Attente confirmation" %></a>
+        <a><%= link_to "Annuler", "", class: "btn btn-outline-danger rounded p-2"
+        %></a>
+
+        <a><%= link_to "Commenter", new_space_review_path(reservation.space), class: "btn btn-outline-primary rounded p-2"%></a>
       </div>
     </div>
   <%end%>

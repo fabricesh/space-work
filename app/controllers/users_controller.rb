@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def destroy
     @space = Space.find(params[:id])
     @space.destroy
+    skip_authorization
   end
 
   def online

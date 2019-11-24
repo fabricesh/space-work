@@ -18,7 +18,11 @@
         <%= simple_form_for @space, :url => {:action => "update_description"}  do |f| %>
           <%= f.text_area :title ,label: false, cols: 80, rows: 1, placeholder: " Titre de l'annonce" %>
           <%= f.text_area :description, cols: 80, rows: 5, placeholder: " Décrivez le décor, l'ambiance, ce qui se trouve à proximité, etc." %>
-          <%= f.button :submit, "Continuer", class: "btn-primary" %>
+          <br>
+
+      <%= f.button :submit, "Continuer", class: "btn-primary" %>
+            <%= link_to "Retour", root_path, class: "btn btn-light" %>
+
         <% end %>
     </div>
   </div>
